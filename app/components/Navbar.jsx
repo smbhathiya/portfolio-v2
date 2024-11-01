@@ -25,10 +25,11 @@ const Navbar = () => {
             className="bg-background text-white px-6 py-4 shadow-lg fixed w-full z-10"
         >
             <div className="container mx-auto flex justify-between items-center">
-                <Link href="/" className="text-xl font-bold">
-                    Bhathiya-Dev
+                <Link href="/" className="sm:hidden text-3xl font-extrabold text-secondary">
+                    BHATHIYA
                 </Link>
-                <ul className="hidden sm:flex space-x-6 text-lg font-semibold">
+                {/* Centered navigation items on larger screens */}
+                <ul className="hidden sm:flex space-x-6 text-lg font-semibold items-center justify-center flex-grow">
                     {navItems.map((item) => (
                         <li key={item.href}>
                             <Link href={item.href} className="hover:text-secondary">
@@ -40,7 +41,7 @@ const Navbar = () => {
                 {/* Mobile Menu Icon */}
                 <div className="sm:hidden">
                     <button onClick={toggleMobileMenu} className="text-white text-3xl">
-                        &#9776;
+                        {isMobileMenuOpen ? "✖" : "☰"}
                     </button>
                 </div>
             </div>
