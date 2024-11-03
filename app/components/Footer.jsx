@@ -1,23 +1,24 @@
+"use client"
 import React from "react";
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Footer = () => {
     return (
-        <footer className="footer border z-10 border-t-secondary border-l-transparent border-r-transparent border-b-transparent text-white">
-            <div className="container p-5 pr-2 flex justify-between items-center">
-                <span className="flex items-center">
-                    <Image
-                        src="/images/logo.png"
-                        alt="logo"
-                        width={40}
-                        height={40}
-                        className="object-contain"
-                    />
-                    <div className="ml-0 text-secondary">BHATHIYA LAKSHAN</div>
+        <motion.footer
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-background text-white border-t border-secondary z-10"
+        >
+            <div className="container mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left">
+                <span className="text-secondary  text-lg">
+                    BHATHIYA LAKSHAN
                 </span>
-                <p className="text-txt_secondary font-bold">All rights reserved</p>
+                <p className="text-txt_secondary font-bold mt-4 sm:mt-0 text-sm sm:text-base">
+                    © {new Date().getFullYear()} All rights reserved
+                </p>
             </div>
-        </footer>
+        </motion.footer>
     );
 };
 
