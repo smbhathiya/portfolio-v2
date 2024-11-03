@@ -14,12 +14,17 @@ const TAB_DATA = [
         content: (
             <div className="space-y-4">
                 {educationData.map((item, index) => (
-                    <div key={index} className="flex items-start bg-background p-4 rounded-lg shadow-md">
-                        {item.icon}
-                        <div>
-                            <h3 className="font-bold text-txt_primary text-xl">{item.title}</h3>
-                            <p className="text-txt_secondary">{item.institution}</p>
-                            <p className="text-txt_secondary">{item.duration}</p>
+                    <div
+                        key={index}
+                        className="flex flex-col sm:flex-row items-start gap-4 bg-[#18191E] p-4 rounded-lg hover:bg-[#18191E]/70 transition-colors duration-300"
+                    >
+                        <div className="flex-shrink-0">
+                            {item.icon}
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-bold text-white text-lg sm:text-xl">{item.title}</h3>
+                            <p className="text-[#ADB7BE] text-sm sm:text-base">{item.institution}</p>
+                            <p className="text-[#ADB7BE] text-sm">{item.duration}</p>
                         </div>
                     </div>
                 ))}
@@ -32,14 +37,25 @@ const TAB_DATA = [
         content: (
             <div className="space-y-4">
                 {experienceData.map((item, index) => (
-                    <div key={index} className="flex items-start bg-background p-4 rounded-lg shadow-md">
-                        {item.icon}
-                        <div>
-                            <h3 className="font-bold text-txt_primary text-xl">{item.title}</h3>
-                            <p className="text-txt_secondary">{item.company}</p>
-                            <p className="text-txt_secondary">{item.duration}</p>
-                            <p className="text-txt_secondary mt-2">Role: <span className="font-semibold">{item.role}</span></p>
-                            <p className="text-txt_secondary mt-1">Technologies used: <span className="font-semibold">{item.technologies}</span></p>
+                    <div
+                        key={index}
+                        className="flex flex-col sm:flex-row items-start gap-4 bg-[#18191E] p-4 rounded-lg hover:bg-[#18191E]/70 transition-colors duration-300"
+                    >
+                        <div className="flex-shrink-0">
+                            {item.icon}
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-bold text-white text-lg sm:text-xl">{item.title}</h3>
+                            <p className="text-[#ADB7BE] text-sm sm:text-base">{item.company}</p>
+                            <p className="text-[#ADB7BE] text-sm">{item.duration}</p>
+                            <div className="pt-2 border-t border-[#33353F]">
+                                <p className="text-[#ADB7BE] text-sm sm:text-base">
+                                    <span className="font-medium">Role:</span> {item.role}
+                                </p>
+                                <p className="text-[#ADB7BE] text-sm sm:text-base mt-1">
+                                    <span className="font-medium">Technologies:</span> {item.technologies}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -59,45 +75,51 @@ const AboutSection = () => {
     };
 
     return (
-        <section className="text-white bg-background py-12 rounded-2xl shadow-lg" id="about">
-            <div className="container mx-auto flex flex-col md:flex-row items-start gap-8 px-6">
+        <section className="text-white lg:py-16" id="about">
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 px-4 xl:gap-16 sm:px-6 xl:px-16">
                 <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="flex-shrink-0"
+                    className="col-span-5 place-self-center hidden  lg:block"
                 >
-                    <Image
-                        src="/images/about-image-1.jpg"
-                        width={400}
-                        height={400}
-                        className="object-cover shadow-lg rounded-2xl"
-                        alt="About me"
-                    />
+                    <div className="rounded-2xl overflow-hidden bg-primary w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+                        <Image
+                            src="/images/about-image-1.jpg"
+                            fill
+                            className="object-cover"
+                            alt="About me"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
+                        />
+                    </div>
                 </motion.div>
-                <div className="flex flex-col w-full md:w-3/4 bg-opacity-50 backdrop-blur-md rounded-2xl p-6 shadow-xl flex-grow">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-6">
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="col-span-7 place-self-center text-left"
+                >
+                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6 text-center lg:text-left mt-8">
                         About Me
                     </h2>
-                    <div className="flex items-start">
-                        <p className="text-white text-base md:text-lg lg:text-xl leading-relaxed text-justify">
-                            {aboutData.content.description}
-                        </p>
-                    </div>
-                    {/*<h2 className="text-3xl lg:text-4xl font-bold text-primary mt-8 mb-6">*/}
-                    {/*    More Information*/}
-                    {/*</h2>*/}
-                    <div className="flex space-x-4 mb-6 mt-8 ">
-                        {TAB_DATA.map((tabInfo) => (
+                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
+                        {aboutData.content.description}
+                    </p>
+
+                    <div className="flex flex-row gap-4 mb-6">
+                        {TAB_DATA.map((tabItem) => (
                             <TabButton
-                                key={tabInfo.id}
-                                selectTab={() => handleTabChange(tabInfo.id)}
-                                active={tab === tabInfo.id}
+                                key={tabItem.id}
+                                selectTab={() => handleTabChange(tabItem.id)}
+                                active={tab === tabItem.id}
                             >
-                                {tabInfo.title}
+                                {tabItem.title}
                             </TabButton>
                         ))}
                     </div>
+
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={tab}
@@ -105,12 +127,11 @@ const AboutSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.3 }}
-                            className="text-txt_secondary"
                         >
                             {TAB_DATA.find((t) => t.id === tab).content}
                         </motion.div>
                     </AnimatePresence>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

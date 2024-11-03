@@ -8,7 +8,7 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-background text-white border-t border-secondary z-10"
+            className="bg-background text-white z-10"
         >
             <div className="container mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left">
                 <span className="text-secondary  text-lg">
