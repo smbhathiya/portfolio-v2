@@ -23,6 +23,7 @@ module.exports = {
         btn_secondary: "#475569",
         txt_primary: "#c8c7c8",
         txt_secondary: "#918e89",
+        box_primary: "#18191E",
       },
     },
   },
