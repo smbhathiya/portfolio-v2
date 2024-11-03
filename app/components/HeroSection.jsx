@@ -22,7 +22,7 @@ const HeroSection = () => {
                         <br />
                         <TypeAnimation
                             sequence={[
-                                "Bhathiya",
+                                "Bhathiya Lakshan",
                                 2000,
                                 "Backend Developer",
                                 2000,
@@ -65,7 +65,7 @@ const HeroSection = () => {
                     <div className="rounded-full w-[250px] h-[250px] lg:w-[400px] bg-primary lg:h-[400px] relative mx-auto sm:mt-0">
                         <Image
                             src="/images/hero-image-2.png"
-                            alt="Profile image of Bhathiya Sandaruwan"
+                            alt="Bhathiya Lakshan"
                             className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                             width={450}
                             height={450}
