@@ -34,7 +34,7 @@ const HeroSection = () => {
                             repeat={Infinity}
                         />
                     </h1>
-                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl lg:mb-8 font-bold">
+                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl lg:mb-8 font-bold sm:pr-5">
                         Full-Stack Engineer specializing in Next.js & React for the frontend and .NET for the backend
                     </p>
                     <div>
@@ -60,7 +60,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.5 }}
                     className="col-span-4 place-self-center mt-4 lg:mt-0"
                 >
-                    <div className="rounded-full  w-[250px] h-[250px] lg:w-[400px] bg-primary lg:h-[400px] relative mx-auto sm:mt-0">
+                    <div className="rounded-full  w-[250px] h-[250px] lg:w-[400px] bg-primary lg:h-[400px] relative mx-auto sm:mt-0 ">
                         <Image
                             src="/images/hero-image-2.png"
                             alt="hero image"
