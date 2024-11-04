@@ -76,12 +76,12 @@ const AboutSection = () => {
 
     return (
         <section className="text-white lg:py-16" id="about">
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 px-4 xl:gap-16 sm:px-6 xl:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 xl:gap-16 sm:px-6 xl:px-16">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="col-span-5 place-self-center hidden  lg:block"
+                    className="col-span-5 place-self-center hidden lg:block"
                 >
                     <div className="rounded-2xl overflow-hidden bg-primary w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
                         <Image
@@ -104,11 +104,11 @@ const AboutSection = () => {
                     <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6 text-center lg:text-left mt-8">
                         About Me
                     </h2>
-                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
+                    <p className="text-txt_primary text-center sm:text-center lg:text-left text-base sm:text-lg mb-6 lg:text-xl">
                         {aboutData.content.description}
                     </p>
 
-                    <div className="flex flex-row gap-4 mb-6">
+                    <div className="flex flex-row gap-4  mb-6">
                         {TAB_DATA.map((tabItem) => (
                             <TabButton
                                 key={tabItem.id}

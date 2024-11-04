@@ -7,7 +7,7 @@ const variants = {
 };
 
 const TabButton = ({ active, selectTab, children }) => {
-    const buttonClasses = active ? "text-background block bg-primary p-2 px-5 pr-5 rounded-full" : "text-txt_secondary";
+    const buttonClasses = active ? "text-txt_primary block bg-box_primary p-2 px-5 pr-5 rounded-xl" : "text-txt_secondary";
 
     return (
         <button onClick={selectTab}>
