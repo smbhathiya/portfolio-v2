@@ -5,8 +5,8 @@ const projectsData = [
         description: "My portfolio website showcases various projects and skills. Built with React and Vite for a modern and efficient development experience, it uses Tailwind CSS for styling. The site is deployed using Firebase, ensuring reliable and scalable hosting",
         image: "/images/projects/1.jpg",
         tag: ["All", "Web"],
-        gitUrl: "/",
-        previewUrl: "/",
+        gitUrl: "https://github.com/smbhathiya/portfolio-website-v1.git",
+        previewUrl: "https://my-web-32130.web.app/",
     },
     {
         id: 2,
