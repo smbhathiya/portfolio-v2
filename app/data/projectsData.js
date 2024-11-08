@@ -1,6 +1,6 @@
 const projectsData = [
     {
-        id: 1,
+        id: 2,
         title: "Portfolio Website v1",
         description: "My portfolio website showcases various projects and skills. Built with React and Vite for a modern and efficient development experience, it uses Tailwind CSS for styling. The site is deployed using Firebase, ensuring reliable and scalable hosting",
         image: "/images/projects/1.jpg",
@@ -9,9 +9,9 @@ const projectsData = [
         previewUrl: "https://my-web-32130.web.app/",
     },
     {
-        id: 2,
-        title: "Photography Portfolio Website",
-        description: "Project 2 description",
+        id: 1,
+        title: "Debra Event Management System",
+        description: "Debra is a service-oriented project developed using ASP.NET. It encompasses both a website and a Windows desktop application. The project aims to provide seamless integration between these platforms to deliver efficient service solutions.",
         image: "/images/projects/2.png",
         tag: ["All", "Web"],
         gitUrl: "/",
