@@ -18,7 +18,7 @@ module.exports = {
         foreground: "var(--foreground)",
         primary: '#ff9f1c',
         secondary: '#e1a446',
-        ternary: "#af8036",
+        ternary: "#cd8b25",
         btn_primary: "#1e293b",
         btn_secondary: "#475569",
         txt_primary: "#c8c7c8",
