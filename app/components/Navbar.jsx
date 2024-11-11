@@ -25,7 +25,7 @@ const Navbar = () => {
         >
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" aria-label="Bhathiya's Homepage" className="sm:hidden text-3xl font-extrabold text-secondary">
-                    BHATHIYA
+
                 </Link>
 
                 {/* Centered navigation items on larger screens */}
