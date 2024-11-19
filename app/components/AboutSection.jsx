@@ -85,11 +85,11 @@ const AboutSection = () => {
                 >
                     <div className="rounded-2xl overflow-hidden bg-primary w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
                         <Image
-                            src="/images/about-image-1.jpg"
-                            fill
-                            className="object-cover"
+                            src="/images/about-image-1.webp"
                             alt="About me"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            width={400}
+                            height={400}
+                            className="object-cover rounded-2xl"
                             priority
                         />
                     </div>
