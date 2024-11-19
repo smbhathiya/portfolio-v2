@@ -18,13 +18,29 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    return (
+        <html lang="en">
+        <head>
+            {/* SEO meta tag for Google Site Verification */}
+            <meta
+                name="google-site-verification"
+                content="RzNWdKkTRXUFmv9ouIVqoWv6OyYrOVM5_UoFdViPTSY"
+            />
+
+            {/* Page Title */}
+            <title>Bhathiya Lakshan</title>
+
+            {/* Meta Description */}
+            <meta
+                name="description"
+                content="Created By Bhathiya Lakshan"
+            />
+        </head>
+        <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
         {children}
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }
