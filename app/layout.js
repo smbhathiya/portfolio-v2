@@ -27,6 +27,11 @@ export default function RootLayout({ children }) {
                 content="RzNWdKkTRXUFmv9ouIVqoWv6OyYrOVM5_UoFdViPTSY"
             />
 
+            {/* SEO meta tag for Bing Site Verification */}
+            <meta
+                name="msvalidate.01"
+                content="E0822530E6698158AA15B1C98E722BE2"/>
+
             {/* Page Title */}
             <title>Bhathiya Lakshan</title>
 
