@@ -1,13 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import GithubIcon from "../../public/github-icon.svg";
-import LinkedinIcon from "../../public/linkedin-icon.svg";
-import WhatsappIcon from "../../public/whatsapp-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 
 const ContactSection = () => {
     const [emailSubmitted, setEmailSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,55 +25,60 @@ const ContactSection = () => {
             body: JSONdata,
         };
 
-        const response = await fetch(endpoint, options);
-        const resData = await response.json();
+        try {
+            const response = await fetch(endpoint, options);
 
-        if (response.status === 200) {
-            console.log("Message sent.");
-            setEmailSubmitted(true);
+            // Check if the response is successful
+            if (!response.ok) {
+                const errorData = await response.json(); // Get error details from response
+                setErrorMessage(errorData.error || "An error occurred while sending the message.");
+                throw new Error(errorData.error || 'Failed to send message');
+            }
+
+            const resData = await response.json();
+
+            if (resData.error) {
+                console.error('Error:', resData.error);
+                setErrorMessage(resData.error); // Show error from API if any
+            } else {
+                console.log("Message sent:", resData.message);
+                setEmailSubmitted(true);
+                setErrorMessage(''); // Clear any previous errors if successful
+            }
+        } catch (error) {
+            console.error('Error during fetch:', error); // Log the error in the console
+            setErrorMessage(error.message); // Display error message to the user
         }
     };
 
     return (
-        <section
-            id="contact"
-            className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
-        >
-            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
+        <section id="contact" className="grid md:grid-cols-2 my-12 py-24 gap-4 relative">
             <div className="z-10">
-                <h5 className="text-2xl font-bold text-secondary my-2">
-                    Let&apos;s Connect
-                </h5>
+                <h5 className="text-2xl font-bold text-secondary my-2">Let&apos;s Connect</h5>
                 <p className="text-txt_primary mb-4 max-w-md">
-                    {" "}
                     I&apos;m currently looking for new opportunities, my inbox is always
                     open. Whether you have a question or just want to say hi, I&apos;ll
                     try my best to get back to you!
                 </p>
                 <div className="socials flex flex-row gap-2">
-                    <Link href="github.com">
-                        <Image src={GithubIcon} alt="Github Icon" width={45} height={45} className="text-primary"/>
+                    <Link href="https://github.com/your-username">
+                        <Image src="/github-icon.svg" alt="Github Icon" width={45} height={45} />
                     </Link>
-                    <Link href="linkedin.com">
-                        <Image src={LinkedinIcon} alt="Linkedin Icon" width={45} height={45}/>
+                    <Link href="https://www.linkedin.com/in/your-username">
+                        <Image src="/linkedin-icon.svg" alt="Linkedin Icon" width={45} height={45} />
                     </Link>
-                    <Link href="linkedin.com">
-                        <Image src={WhatsappIcon} alt="Whatsapp Icon" width={45} height={45} />
+                    <Link href="https://wa.me/your-phone-number">
+                        <Image src="/whatsapp-icon.svg" alt="Whatsapp Icon" width={45} height={45} />
                     </Link>
                 </div>
             </div>
             <div>
                 {emailSubmitted ? (
-                    <p className="text-green-500 text-sm mt-2">
-                        Email sent successfully!
-                    </p>
+                    <p className="text-green-500 text-sm mt-2">Email sent successfully!</p>
                 ) : (
                     <form className="flex flex-col" onSubmit={handleSubmit}>
                         <div className="mb-6">
-                            <label
-                                htmlFor="email"
-                                className="text-white block mb-2 text-sm font-medium"
-                            >
+                            <label htmlFor="email" className="text-white block mb-2 text-sm font-medium">
                                 Your email
                             </label>
                             <input
@@ -88,10 +91,7 @@ const ContactSection = () => {
                             />
                         </div>
                         <div className="mb-6">
-                            <label
-                                htmlFor="subject"
-                                className="text-white block text-sm mb-2 font-medium"
-                            >
+                            <label htmlFor="subject" className="text-white block text-sm mb-2 font-medium">
                                 Subject
                             </label>
                             <input
@@ -104,10 +104,7 @@ const ContactSection = () => {
                             />
                         </div>
                         <div className="mb-6">
-                            <label
-                                htmlFor="message"
-                                className="text-white block text-sm mb-2 font-medium"
-                            >
+                            <label htmlFor="message" className="text-white block text-sm mb-2 font-medium">
                                 Message
                             </label>
                             <textarea
@@ -125,6 +122,7 @@ const ContactSection = () => {
                         </button>
                     </form>
                 )}
+                {errorMessage && <p className="text-red-500 text-sm mt-2">{errorMessage}</p>}
             </div>
         </section>
     );

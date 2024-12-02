@@ -75,7 +75,7 @@ const AboutSection = () => {
     };
 
     return (
-        <section className="text-white lg:py-16" id="about">
+        <section className="text-white pb-6 lg:py-16" id="about">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 xl:gap-16 sm:px-6 xl:px-16">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
