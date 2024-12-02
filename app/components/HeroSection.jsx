@@ -74,11 +74,11 @@ const HeroSection = () => {
                         <button
                             className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-primary text-background hover:bg-secondary font-bold mt-3"
                             onClick={handleDownloadClick}
-                            disabled={isDisabled} // Disable the button during download
+                            disabled={isDisabled}
                         >
                             <span className="inline-block bg-primary hover:bg-secondary rounded-full px-5 py-2">
                                 {isLoading ? (
-                                    <div className="animate-spin inline-block w-5 h-5 border-t-2 border-white rounded-full"></div> // Spinner for loading state
+                                    <div className="animate-spin inline-block w-5 h-5 border-t-2 border-black rounded-full"></div> // Spinner for loading state
                                 ) : (
                                     "Download CV"
                                 )}
