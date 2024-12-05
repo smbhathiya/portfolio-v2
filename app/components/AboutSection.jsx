@@ -77,23 +77,24 @@ const AboutSection = () => {
     return (
         <section className="text-white pb-6 lg:py-16" id="about">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 xl:gap-16 sm:px-6 xl:px-16">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="col-span-5 place-self-center hidden lg:block"
-                >
-                    <div className="rounded-2xl overflow-hidden bg-primary w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
-                        <Image
-                            src="/images/about-image-1.webp"
-                            alt="About me"
-                            width={400}
-                            height={400}
-                            className="object-cover rounded-2xl"
-                            priority
-                        />
-                    </div>
-                </motion.div>
+            <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="col-span-5 place-self-center hidden lg:block flex-shrink-0"
+            >
+                <div className="rounded-2xl overflow-hidden bg-primary w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+                    <Image
+                        src="/images/about-image-1.webp"
+                        alt="About me"
+                        width={400}
+                        height={400}
+                        className="object-cover rounded-2xl"
+                        priority
+                    />
+                </div>
+            </motion.div>
+
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
@@ -127,10 +128,12 @@ const AboutSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.3 }}
+                            className="min-h-[300px]"
                         >
                             {TAB_DATA.find((t) => t.id === tab).content}
                         </motion.div>
                     </AnimatePresence>
+
                 </motion.div>
             </div>
         </section>
