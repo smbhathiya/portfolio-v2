@@ -1,5 +1,3 @@
-// File: TabButton.js
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -11,7 +9,7 @@ const variants = {
 const TabButton = ({ active, selectTab, children }) => {
     const buttonClasses = active
         ? "text-txt_primary block bg-box_primary p-2 px-5 pr-5 rounded-xl"
-        : "text-txt_secondary";
+        : "text-txt_secondary block bg-box_primary p-2 px-5 pr-5 rounded-xl";
 
     return (
         <button
@@ -27,7 +25,6 @@ const TabButton = ({ active, selectTab, children }) => {
                 animate={active ? "active" : "default"}
                 variants={variants}
                 transition={{ type: "spring", stiffness: 200 }}
-                className="h-1 bg-primary-500 mt-2 mr-3"
             ></motion.div>
         </button>
     );

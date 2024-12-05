@@ -23,8 +23,8 @@ const projectsData = [
         description: "Debra is a service-oriented project developed using ASP.NET. It encompasses both a website and a Windows desktop application. The project aims to provide seamless integration between these platforms to deliver efficient service solutions.",
         image: "/images/projects/2.webp",
         tag: ["All", "Web"],
-        gitUrl: "/",
-        previewUrl: "/",
+        gitUrl: "https://github.com/smbhathiya/DebraEventmanagement.git",
+        previewUrl: "#",
     },
 ];
 
