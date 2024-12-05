@@ -10,27 +10,23 @@ const HeroSection = () => {
     const [isDisabled, setIsDisabled] = useState(false);
 
     const handleDownloadClick = async (e) => {
-        e.preventDefault(); // Prevent default behavior to handle custom download
+        e.preventDefault(); 
         setIsLoading(true);
-        setIsDisabled(true); // Disable the button while downloading
+        setIsDisabled(true); 
 
-        // Creating a link element to trigger the download
         const link = document.createElement("a");
-        link.href = "/docs/Bhathiya_Lakshan.pdf"; // Path to your CV PDF
-        link.download = "Bhathiya_Lakshan.pdf"; // Name of the downloaded file
+        link.href = "/docs/Bhathiya_Lakshan.pdf";
+        link.download = "Bhathiya_Lakshan.pdf";
 
-        // Append the link and programmatically click it to start the download
         document.body.appendChild(link);
         link.click();
 
-        // After triggering the download, remove the link element
         document.body.removeChild(link);
 
-        // Simulate the download process delay, and then reset the button
         setTimeout(() => {
-            setIsLoading(false); // Stop the loading animation
-            setIsDisabled(false); // Re-enable the button
-        }, 1000); // You can adjust this timeout as per the download time
+            setIsLoading(false); 
+            setIsDisabled(false); 
+        }, 1000);
     };
 
     return (
@@ -78,7 +74,7 @@ const HeroSection = () => {
                         >
                             <span className="inline-block bg-primary hover:bg-secondary rounded-full px-5 py-2">
                                 {isLoading ? (
-                                    <div className="animate-spin inline-block w-5 h-5 border-t-2 border-black rounded-full"></div> // Spinner for loading state
+                                    <div className="animate-spin inline-block w-5 h-5 border-t-2 border-black rounded-full"></div> 
                                 ) : (
                                     "Download CV"
                                 )}
@@ -92,9 +88,9 @@ const HeroSection = () => {
                     transition={{ duration: 0.5 }}
                     className="col-span-4 place-self-center mt-4 lg:mt-0"
                 >
-                    <div className="rounded-full w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative mx-auto sm:mt-0 bg-primary">
+                    <div className="rounded-full w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative mx-auto sm:mt-0">
                         <Image
-                            src="/images/hero-image-2.webp"
+                            src="/images/hero-image-2.png"
                             alt="hero image"
                             className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                             width={450}
