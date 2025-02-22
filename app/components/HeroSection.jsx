@@ -92,9 +92,9 @@ const HeroSection = () => {
             <div className="col-span-1 lg:col-span-5 order-1 lg:order-2 place-self-center relative">
               <div className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] lg:w-[320px] lg:h-[320px] mx-auto relative">
                 <Image
-                  src="/images/hero-image-2.png"
+                  src="/images/h3.png"
                   alt="hero image"
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-full border-4 border-secondary hover:rotate-6 hover:scale-110 transition-all duration-500 z-10"
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2  hover:rotate-6 hover:scale-110 transition-all duration-500 z-10"
                   width={320}
                   height={320}
                   priority

@@ -20,7 +20,7 @@ const AboutSection = () => {
         >
           <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px] mx-auto relative overflow-hidden rounded-2xl shadow-xl group">
             <Image
-              src="/images/hero-image-2.png"
+              src="/images/h4.png"
               alt="About me"
               width={350}
               height={350}
