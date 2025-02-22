@@ -1,43 +1,45 @@
-// File: ProjectCard.js
-
 import React from "react";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
-    return (
-        <div>
-            <div
-                className="h-52 md:h-72 rounded-t-xl relative group"
-                style={{
-                    background: `url(${imgUrl})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            >
-                <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500">
-                    <Link
-                        href={gitUrl}
-                        className="h-14 w-14 mr-2 border-2 relative rounded-full border-primary hover:bg-primary duration-200 group/link"
-                        target="_blank"
-                    >
-                        <CodeBracketIcon className="h-10 w-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
-                    </Link>
-                    <Link
-                        href={previewUrl}
-                        className="h-14 w-14 border-2 relative rounded-full border-primary text-primary hover:bg-primary duration-200 group/link"
-                        target="_blank"
-                    >
-                        <EyeIcon className="h-10 w-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
-                    </Link>
-                </div>
-            </div>
-            <div className="text-white rounded-b-xl mt-3 bg-[#181818] py-6 px-4">
-                <h5 className="text-xl font-semibold mb-2">{title}</h5>
-                <p className="text-txt_primary text-justify">{description}</p>
-            </div>
+  return (
+    <div className="group rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+      <div
+        className="h-40 sm:h-48 md:h-56 rounded-t-xl relative bg-box_primary"
+        style={{
+          background: `url(${imgUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="overlay absolute inset-0 bg-background bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center gap-4 transition-all duration-500">
+          <Link
+            href={gitUrl}
+            className="w-12 h-12 flex items-center justify-center border-2 border-primary rounded-full text-primary hover:bg-primary hover:text-foreground transition-all duration-300"
+            target="_blank"
+          >
+            <CodeBracketIcon className="w-6 h-6" />
+          </Link>
+          <Link
+            href={previewUrl}
+            className="w-12 h-12 flex items-center justify-center border-2 border-primary rounded-full text-primary hover:bg-primary hover:text-foreground transition-all duration-300"
+            target="_blank"
+          >
+            <EyeIcon className="w-6 h-6" />
+          </Link>
         </div>
-    );
+      </div>
+      <div className="bg-box_primary p-4 rounded-b-xl">
+        <h5 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+          {title}
+        </h5>
+        <p className="text-txt_primary text-sm sm:text-base line-clamp-2">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default ProjectCard;

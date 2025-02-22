@@ -1,49 +1,42 @@
-/*
-import nodemailer from 'nodemailer';
-import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+import { NextResponse } from "next/server";
+import sgMail from "@sendgrid/mail";
 
-export async function POST(req) {
-    const { email, subject, message } = await req.json();
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    // Check if required fields are provided
-    if (!email || !subject || !message) {
-        return new Response(
-            JSON.stringify({ error: 'Missing required fields' }),
-            { status: 400 }
-        );
-    }
+export async function POST(request) {
+  try {
+    const { email, subject, message } = await request.json();
 
-    try {
-        // Create a transporter using Gmail's SMTP service
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.local.GMAIL_USER, // Your Gmail address
-                pass: process.env.local.GMAIL_APP_PASSWORD, // App-specific password
-            },
-        });
+    const mailOptions = {
+      from: process.env.YOUR_EMAIL, 
+      to: process.env.YOUR_EMAIL, 
+      replyTo: email,
+      subject: `New Contact Form Submission: ${subject}`,
+      text: `
+        From: ${email}
+        Subject: ${subject}
+        Message: ${message}
+      `,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>From:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    };
 
-        // Set up the email details
-        const mailOptions = {
-            from: process.env.local.GMAIL_USER,
-            to: process.env.local.GMAIL_USER, // or any other email you'd like to send it to
-            subject: subject,
-            text: `Message from ${email}:\n\n${message}`,
-        };
+    // Send the email
+    await sgMail.send(mailOptions);
 
-        // Send email
-        await transporter.sendMail(mailOptions);
-
-        return new Response(
-            JSON.stringify({ message: 'Email sent successfully' }),
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error('Error sending email:', error);
-        return new Response(
-            JSON.stringify({ error: 'Failed to send message' }),
-            { status: 500 }
-        );
-    }
+    return NextResponse.json(
+      { message: "Email sent successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return NextResponse.json(
+      { error: "Failed to send email: " + error.message },
+      { status: 500 }
+    );
+  }
 }
-*/
