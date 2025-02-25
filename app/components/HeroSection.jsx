@@ -42,7 +42,7 @@ const HeroSection = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Text Content */}
-            <div className="col-span-1 lg:col-span-7 order-2 lg:order-1 flex flex-col justify-center">
+            <div className="col-span-1 lg:col-span-7 order-2 lg:order-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-box_primary mb-4 lg:mb-6 leading-tight">
                 <span className="block text-transparent pb-4 bg-clip-text bg-white">
                   Bhathiya
