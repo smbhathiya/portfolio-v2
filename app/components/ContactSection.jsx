@@ -76,17 +76,17 @@ const ContactSection = () => {
           <div className="socials flex flex-row gap-4">
             {[
               {
-                href: "https://github.com/your-username",
+                href: "https://github.com/smbhathiya",
                 src: "/github-icon.svg",
                 alt: "Github",
               },
               {
-                href: "https://www.linkedin.com/in/your-username",
+                href: "https://www.linkedin.com/in/bhathiya-lakshan-91579722a/",
                 src: "/linkedin-icon.svg",
                 alt: "LinkedIn",
               },
               {
-                href: "https://wa.me/your-phone-number",
+                href: "https://wa.me/+94768941816",
                 src: "/whatsapp-icon.svg",
                 alt: "WhatsApp",
               },
@@ -132,7 +132,7 @@ const ContactSection = () => {
                 required
                 className="bg-box_primary border border-primary/30 text-foreground text-sm sm:text-base rounded-lg w-full p-3 placeholder-txt_secondary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
                 placeholder="john@example.com"
-                disabled={isLoading} // Disable during loading
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -149,7 +149,7 @@ const ContactSection = () => {
                 required
                 className="bg-box_primary border border-primary/30 text-foreground text-sm sm:text-base rounded-lg w-full p-3 placeholder-txt_secondary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
                 placeholder="Just saying hi"
-                disabled={isLoading} // Disable during loading
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -164,7 +164,7 @@ const ContactSection = () => {
                 id="message"
                 className="bg-box_primary border border-primary/30 text-foreground text-sm sm:text-base rounded-lg w-full p-3 placeholder-txt_secondary h-32 resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
                 placeholder="Let's talk about..."
-                disabled={isLoading} // Disable during loading
+                disabled={isLoading}
               />
             </div>
             <button
@@ -245,7 +245,6 @@ const ContactSection = () => {
               )}
             </button>
           </form>
-          {/* Removed separate success/error messages below the form since they're now in the button */}
         </motion.div>
       </div>
     </section>
