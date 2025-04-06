@@ -113,7 +113,7 @@ export default function HeroSection() {
                       variant="outline"
                       className="rounded-xl px-5 text-base"
                     >
-                      <Link href="#link">
+                      <Link href="#about">
                         <span className="text-nowrap">About Me</span>
                         <ChevronRight className="ml-2 inline-block size-4" />
                       </Link>
