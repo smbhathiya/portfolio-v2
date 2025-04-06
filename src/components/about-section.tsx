@@ -38,7 +38,6 @@ export default function AboutSection() {
                 alt="Bhathiya Lakshan"
                 width={250}
                 height={250}
-                //className="rounded-full border-4 border-primary shadow-md object-cover"
               />
             </div>
 
@@ -47,18 +46,19 @@ export default function AboutSection() {
               <h2 className="text-3xl font-bold text-primary dark:text-primary">
                 Hi, {greeting}!
                 <br />
-                I'm Bhathiya Lakshan
+                I&apos;m Bhathiya Lakshan
               </h2>
               <p className="text-muted-foreground text-lg">
-                I'm a Full Stack Developer, passionate about building modern,
-                high-performance platforms with clean architecture. I specialize
-                in TypeScript, Next.js, Prisma, and .NET Entity Framework Core —
-                and love creating systems that scale beautifully.
+                I&apos;m a Full Stack Developer, passionate about building
+                modern, high-performance platforms with clean architecture. I
+                specialize in TypeScript, Next.js, Prisma, and .NET Entity
+                Framework Core — and love creating systems that scale
+                beautifully.
               </p>
               <p className="text-muted-foreground">
-                Whether it's a full-stack platform, a CMS, a dashboard, or an
-                API integration — I aim to deliver efficient, secure, and
-                maintainable solutions for real-world problems.
+                Whether it&apos;s a full-stack platform, a CMS, a dashboard, or
+                an API integration — I aim to deliver efficient, secure, and
+                maintainable solutions for real-world problems
               </p>
             </CardContent>
           </Card>

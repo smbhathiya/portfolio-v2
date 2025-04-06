@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { HeroHeader } from "@/components/hero5-header";
@@ -42,34 +41,7 @@ export default function HeroSection() {
         </div>
         <section>
           <div className="relative pt-24 md:pt-36">
-            {/* <AnimatedGroup
-        variants={{
-          container: {
-            visible: {
-              transition: {
-                delayChildren: 1,
-              },
-            },
-          },
-          item: {
-            hidden: {
-              opacity: 0,
-              y: 20,
-            },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                type: "spring",
-                bounce: 0.3,
-                duration: 2,
-              },
-            },
-          },
-        }}
-        className="absolute inset-0 -z-20"
-      >
-      </AnimatedGroup> */}
+
             <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
             <div className="mx-auto max-w-7xl px-6">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
