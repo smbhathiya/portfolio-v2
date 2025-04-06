@@ -1,0 +1,69 @@
+"use client";
+
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { AnimatedGroup } from "./ui/animated-group";
+
+export default function AboutSection() {
+  const [greeting, setGreeting] = useState("");
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) setGreeting("Good morning");
+    else if (hour < 18) setGreeting("Good afternoon");
+    else setGreeting("Good evening");
+  }, []);
+
+  return (
+    <section id="about" className="w-full px-4 md:px-10 py-10 md:py-20">
+      <AnimatedGroup
+        variants={{
+          container: {
+            visible: {
+              transition: {
+                staggerChildren: 0.05,
+                delayChildren: 0.75,
+              },
+            },
+          },
+        }}
+      >
+        <div className="mx-auto max-w-6xl">
+          <Card className="flex flex-col md:flex-row items-center gap-8 p-6 md:p-10 rounded-2xl shadow-lg">
+            {/* Left side - profile image */}
+            <div className="flex-shrink-0">
+              <Image
+                src="/source/h3.png"
+                alt="Bhathiya Lakshan"
+                width={250}
+                height={250}
+                //className="rounded-full border-4 border-primary shadow-md object-cover"
+              />
+            </div>
+
+            {/* Right side - about content */}
+            <CardContent className="text-center md:text-left space-y-4">
+              <h2 className="text-3xl font-bold text-primary dark:text-primary">
+                Hi, {greeting}!
+                <br />
+                I'm Bhathiya Lakshan
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                I'm a Full Stack Developer, passionate about building modern,
+                high-performance platforms with clean architecture. I specialize
+                in TypeScript, Next.js, Prisma, and .NET Entity Framework Core —
+                and love creating systems that scale beautifully.
+              </p>
+              <p className="text-muted-foreground">
+                Whether it's a full-stack platform, a CMS, a dashboard, or an
+                API integration — I aim to deliver efficient, secure, and
+                maintainable solutions for real-world problems.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </AnimatedGroup>
+    </section>
+  );
+}
