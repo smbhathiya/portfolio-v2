@@ -1,9 +1,9 @@
 "use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatedGroup } from "./ui/animated-group";
+import { Button } from "./ui/button";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
@@ -63,6 +63,16 @@ export default function AboutSection() {
                 an API integration — I aim to deliver efficient, secure, and
                 maintainable solutions for real-world problems
               </p>
+              <Button
+                className="dark:text-black cursor-pointer"
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1bBjbIB7WhKDn6jZAn_tnsN5Gl34YWdrU/view?usp=sharing"
+                  )
+                }
+              >
+                Download CV
+              </Button>
             </CardContent>
           </Card>
         </div>
