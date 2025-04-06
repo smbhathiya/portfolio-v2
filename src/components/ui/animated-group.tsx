@@ -1,6 +1,6 @@
 "use client";
 import { JSX, ReactNode } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants } from "motion/react";
 import React from "react";
 
 export type PresetType =
@@ -23,8 +23,8 @@ export type AnimatedGroupProps = {
     item?: Variants;
   };
   preset?: PresetType;
-  as?: keyof JSX.IntrinsicElements;
-  asChild?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
+  asChild?: React.ElementType;
 };
 
 const defaultContainerVariants: Variants = {
@@ -95,7 +95,7 @@ const presetVariants: Record<PresetType, Variants> = {
   },
 };
 
-const addDefaultVariants = (variants: Variants): Variants => ({
+const addDefaultVariants = (variants: Variants) => ({
   hidden: { ...defaultItemVariants.hidden, ...variants.hidden },
   visible: { ...defaultItemVariants.visible, ...variants.visible },
 });
@@ -112,13 +112,17 @@ function AnimatedGroup({
     item: addDefaultVariants(preset ? presetVariants[preset] : {}),
     container: addDefaultVariants(defaultContainerVariants),
   };
-
   const containerVariants = variants?.container || selectedVariants.container;
   const itemVariants = variants?.item || selectedVariants.item;
 
-  // ✅ Use motion['div'] style access
-  const MotionComponent = (motion as any)[as] || motion.div;
-  const MotionChild = (motion as any)[asChild] || motion.div;
+  const MotionComponent = React.useMemo(
+    () => motion.create(as as keyof JSX.IntrinsicElements),
+    [as]
+  );
+  const MotionChild = React.useMemo(
+    () => motion.create(asChild as keyof JSX.IntrinsicElements),
+    [asChild]
+  );
 
   return (
     <MotionComponent
