@@ -2,28 +2,24 @@ import Link from "next/link";
 
 const links = [
   {
-    title: "Features",
-    href: "#",
-  },
-  {
-    title: "Solution",
-    href: "#",
-  },
-  {
-    title: "Customers",
-    href: "#",
-  },
-  {
-    title: "Pricing",
-    href: "#",
-  },
-  {
-    title: "Help",
-    href: "#",
+    title: "Home",
+    href: "/",
   },
   {
     title: "About",
-    href: "#",
+    href: "#about",
+  },
+  {
+    title: "Skills",
+    href: "#skills",
+  },
+  {
+    title: "Projects",
+    href: "#projects",
+  },
+  {
+    title: "Contact",
+    href: "#contact",
   },
 ];
 
@@ -44,7 +40,7 @@ export default function FooterSection() {
         </div>
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           <Link
-            href="#"
+            href="https://x.com/smbhathiya"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X/Twitter"
@@ -64,7 +60,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="#"
+            href="https://www.linkedin.com/in/bhathiya-lakshan-91579722a/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -84,7 +80,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="#"
+            href="https://facebook.com/smbhathiya"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -104,7 +100,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="#"
+            href="https://www.threads.net/@bhathiya_lakshan"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Threads"
@@ -129,7 +125,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="#"
+            href="https://www.instagram.com/bhathiya_lakshan"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -149,23 +145,19 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="#"
+            href="https://github.com/smbhathiya"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="TikTok"
+            aria-label="GitHub"
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
               className="size-6"
               xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
               viewBox="0 0 24 24"
+              fill="currentColor"
             >
-              <path
-                fill="currentColor"
-                d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48"
-              ></path>
+              <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.173c-3.338.726-4.033-1.415-4.033-1.415-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.42-1.305.763-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.625-5.48 5.921.431.372.815 1.104.815 2.223v3.293c0 .322.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z" />
             </svg>
           </Link>
         </div>
