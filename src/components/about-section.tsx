@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatedGroup } from "./ui/animated-group";
 import { Button } from "./ui/button";
+import { useTheme } from "next-themes";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
   const cvLink = process.env.NEXT_PUBLIC_CV_URL!;
+  const { theme } = useTheme();
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -38,7 +40,7 @@ export default function AboutSection() {
             {/* Left side - profile image */}
             <div className="flex-shrink-0">
               <Image
-                src="/source/h3.png"
+                src={theme === "dark" ? "/source/p2.png" : "/source/p1.png"}
                 alt="Bhathiya Lakshan"
                 width={250}
                 height={250}
