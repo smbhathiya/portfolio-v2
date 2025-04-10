@@ -62,7 +62,7 @@ export default function HeroSection() {
                     <Button
                       asChild
                       size="lg"
-                      className="rounded-2xl px-5 text-2xl p-6 bg-black hover:bg-black/80 text-white dark:bg-primary dark:hover:bg-primary/80 dark:text-black"
+                      className="rounded-2xl px-5 text-2xl p-6 dark:text-black"
                     >
                       <span className="text-nowrap">Bhathiya Lakshan</span>
                     </Button>
