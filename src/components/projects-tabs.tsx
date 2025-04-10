@@ -75,6 +75,7 @@ export default function ProjectsTabs() {
                     <Image
                       src={project.images[0]}
                       alt={project.title}
+                      loading="lazy"
                       fill
                       className="object-cover rounded-t-xl"
                     />
