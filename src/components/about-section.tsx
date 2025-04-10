@@ -10,6 +10,13 @@ export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
   const cvLink = process.env.NEXT_PUBLIC_CV_URL!;
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const imageSrc = theme === "dark" ? "/source/p2.png" : "/source/p1.png";
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -17,6 +24,10 @@ export default function AboutSection() {
     else if (hour < 18) setGreeting("Good afternoon");
     else setGreeting("Good evening");
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <section
@@ -40,7 +51,7 @@ export default function AboutSection() {
             {/* Left side - profile image */}
             <div className="flex-shrink-0">
               <Image
-                src={theme === "dark" ? "/source/p2.png" : "/source/p1.png"}
+                src={imageSrc}
                 alt="Bhathiya Lakshan"
                 width={250}
                 height={250}
