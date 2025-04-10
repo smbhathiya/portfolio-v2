@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
+  const cvLink = process.env.NEXT_PUBLIC_CV_URL!;
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -65,11 +66,7 @@ export default function AboutSection() {
               </p>
               <Button
                 className="dark:text-black cursor-pointer"
-                onClick={() =>
-                  window.open(
-                    "https://drive.google.com/file/d/1bBjbIB7WhKDn6jZAn_tnsN5Gl34YWdrU/view?usp=sharing"
-                  )
-                }
+                onClick={() => window.open(cvLink)}
               >
                 Download CV
               </Button>
