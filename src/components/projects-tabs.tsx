@@ -8,15 +8,26 @@ import Image from "next/image";
 import projectsData from "@/data/projects";
 import ProjectDetailsDialog from "./project-details-dialog";
 
+// Define the Project type
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  tag: string[];
+  images: string[];
+  gitUrl: string;
+  previewUrl: string;
+}
+
 const categories = ["All", "Web", "Desktop", "Mobile"];
 
 export default function ProjectsTabs() {
   const [visibleCount, setVisibleCount] = useState(4);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Function to open the dialog
-  const openDialog = (project: any) => {
+  const openDialog = (project: Project) => {
     setSelectedProject(project);
     setIsDialogOpen(true);
   };
@@ -57,7 +68,7 @@ export default function ProjectsTabs() {
         return (
           <TabsContent key={cat} value={cat}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-              {visibleProjects.map((project) => (
+              {visibleProjects.map((project: Project) => (
                 <Card key={project.id} className="overflow-hidden p-0">
                   {/* Image section */}
                   <div className="relative w-full h-40 m-0">
