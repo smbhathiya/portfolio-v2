@@ -1,11 +1,11 @@
 "use client";
 
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import projectsData from "@/data/projects"; // Assuming you have this data
+import projectsData from "@/data/projects";
 import ProjectDetailsDialog from "./project-details-dialog";
 
 const categories = ["All", "Web", "Desktop", "Mobile"];
