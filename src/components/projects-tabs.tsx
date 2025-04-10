@@ -58,9 +58,9 @@ export default function ProjectsTabs() {
           <TabsContent key={cat} value={cat}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
               {visibleProjects.map((project) => (
-                <Card key={project.id} className="overflow-hidden">
+                <Card key={project.id} className="overflow-hidden p-0">
                   {/* Image section */}
-                  <div className="relative w-full h-40">
+                  <div className="relative w-full h-40 m-0">
                     <Image
                       src={project.images[0]}
                       alt={project.title}
