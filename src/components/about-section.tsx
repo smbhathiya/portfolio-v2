@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatedGroup } from "./ui/animated-group";
 import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
@@ -41,7 +40,7 @@ export default function AboutSection() {
                 <div className="w-[250px] h-[250px] bg-primary rounded-full"></div>
               </div>
               <Image
-                src="/source/p3.png"
+                src="/source/p3.webp"
                 alt="Bhathiya Lakshan"
                 width={250}
                 height={250}
@@ -54,10 +53,10 @@ export default function AboutSection() {
               <h2 className="text-3xl font-bold text-primary dark:text-primary">
                 Hi, {greeting}!
                 <br />
-                I'm Bhathiya Lakshan
+                I&apos;m Bhathiya Lakshan
               </h2>
               <p className="text-muted-foreground text-lg">
-                I'm a Full Stack Developer, passionate about building modern,
+                I&apos;m a Full Stack Developer, passionate about building modern,
                 high-performance platforms with clean architecture. I specialize
                 in TypeScript, Next.js, Prisma, and .NET Entity Framework Core —
                 and love creating systems that scale beautifully.
