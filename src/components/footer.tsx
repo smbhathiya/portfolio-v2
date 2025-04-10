@@ -23,6 +23,13 @@ const links = [
   },
 ];
 
+const twitter = process.env.NEXT_PUBLIC_TWITTER_URL!;
+const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL!;
+const facebook = process.env.NEXT_PUBLIC_FACEBOOK_URL!;
+const threads = process.env.NEXT_PUBLIC_THREADS_URL!;
+const instagram = process.env.NEXT_PUBLIC_INSTAGRAM_URL!;
+const github = process.env.NEXT_PUBLIC_GITHUB_URL!;
+
 export default function FooterSection() {
   return (
     <footer className="py-16 md:py-32">
@@ -40,7 +47,7 @@ export default function FooterSection() {
         </div>
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           <Link
-            href="https://x.com/smbhathiya"
+            href={twitter}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X/Twitter"
@@ -60,7 +67,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="https://www.linkedin.com/in/bhathiya-lakshan-91579722a/"
+            href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -80,7 +87,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="https://facebook.com/smbhathiya"
+            href={facebook}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -100,7 +107,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="https://www.threads.net/@bhathiya_lakshan"
+            href={threads}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Threads"
@@ -125,7 +132,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="https://www.instagram.com/bhathiya_lakshan"
+            href={instagram}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -145,7 +152,7 @@ export default function FooterSection() {
             </svg>
           </Link>
           <Link
-            href="https://github.com/smbhathiya"
+            href={github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
