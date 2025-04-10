@@ -62,7 +62,7 @@ export default function AboutSection() {
                 and love creating systems that scale beautifully.
               </p>
               <p className="text-muted-foreground">
-                Whether it's a full-stack platform, a CMS, a dashboard, or an
+                Whether it&apos;s a full-stack platform, a CMS, a dashboard, or an
                 API integration — I aim to deliver efficient, secure, and
                 maintainable solutions for real-world problems
               </p>
