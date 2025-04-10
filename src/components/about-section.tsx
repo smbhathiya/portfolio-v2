@@ -4,19 +4,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatedGroup } from "./ui/animated-group";
 import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
   const cvLink = process.env.NEXT_PUBLIC_CV_URL!;
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const imageSrc = theme === "dark" ? "/source/p2.png" : "/source/p1.png";
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -24,10 +15,6 @@ export default function AboutSection() {
     else if (hour < 18) setGreeting("Good afternoon");
     else setGreeting("Good evening");
   }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <section
@@ -48,13 +35,16 @@ export default function AboutSection() {
       >
         <div className="mx-auto max-w-6xl">
           <Card className="flex flex-col md:flex-row items-center gap-8 p-6 md:p-10 rounded-2xl shadow-lg">
-            {/* Left side - profile image */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[250px] h-[250px] bg-primary rounded-full"></div>
+              </div>
               <Image
-                src={imageSrc}
+                src="/source/p3.webp"
                 alt="Bhathiya Lakshan"
                 width={250}
                 height={250}
+                className="relative "
               />
             </div>
 
@@ -66,15 +56,14 @@ export default function AboutSection() {
                 I&apos;m Bhathiya Lakshan
               </h2>
               <p className="text-muted-foreground text-lg">
-                I&apos;m a Full Stack Developer, passionate about building
-                modern, high-performance platforms with clean architecture. I
-                specialize in TypeScript, Next.js, Prisma, and .NET Entity
-                Framework Core — and love creating systems that scale
-                beautifully.
+                I&apos;m a Full Stack Developer, passionate about building modern,
+                high-performance platforms with clean architecture. I specialize
+                in TypeScript, Next.js, Prisma, and .NET Entity Framework Core —
+                and love creating systems that scale beautifully.
               </p>
               <p className="text-muted-foreground">
-                Whether it&apos;s a full-stack platform, a CMS, a dashboard, or
-                an API integration — I aim to deliver efficient, secure, and
+                Whether it&apos;s a full-stack platform, a CMS, a dashboard, or an
+                API integration — I aim to deliver efficient, secure, and
                 maintainable solutions for real-world problems
               </p>
               <Button
