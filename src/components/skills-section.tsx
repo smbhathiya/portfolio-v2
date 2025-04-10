@@ -19,7 +19,7 @@ export default function SkillsSection() {
             >
               {skills.map(({ name, Icon }) => (
                 <Card key={name} className="flex items-center gap-3 p-4">
-                  <Icon className="w-6 h-6 text-black dark:text-primary" />
+                  <Icon className="w-6 h-6 text-primary dark:text-primary" />
                   <span className="text-black dark:text-white">{name}</span>
                 </Card>
               ))}
