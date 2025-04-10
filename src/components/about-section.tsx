@@ -11,9 +11,10 @@ export default function AboutSection() {
   const cvLink = process.env.NEXT_PUBLIC_CV_URL!;
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const imageSrc = theme === "dark" ? "/source/p2.png" : "/source/p1.png";
 
@@ -23,6 +24,10 @@ export default function AboutSection() {
     else if (hour < 18) setGreeting("Good afternoon");
     else setGreeting("Good evening");
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <section
