@@ -30,6 +30,16 @@ const projectsData = [
     gitUrl: "https://github.com/smbhathiya/DebraEventmanagement.git",
     previewUrl: "#",
   },
+  {
+    id: 4,
+    title: "Cineplex Cinema Ticket Booking System",
+    description:
+      "Cineplex Cinema is a campus project developed using PHP and MySQL. It's a fully functional web application for a movie theater ticket booking system. The platform allows users to browse movies, view showtimes, book tickets, and manage their bookings with ease. The design includes a modern, dark-themed UI with carousel displays, now-showing listings, and user account management.",
+    images: ["/source/projects/cineplex-1.webp"],
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/smbhathiya/CineplexCinemaWeb.git",
+    previewUrl: "#",
+  },
 ];
 
 export default projectsData;
