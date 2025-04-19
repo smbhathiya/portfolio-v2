@@ -1,148 +1,158 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import projectsData from "@/data/projects";
 import ProjectDetailsDialog from "./project-details-dialog";
 
-// Define the Project type
+// Update the Project type
 interface Project {
-  id: number;
+  id: number; // id as number
   title: string;
   description: string;
-  tag: string[];
   images: string[];
+  tag: string[];
   gitUrl: string;
-  previewUrl: string;
+  previewUrl: string; // Make previewUrl required
 }
 
 const categories = ["All", "Web", "Desktop", "Mobile"];
 
-export default function ProjectsTabs() {
+export default function ProjectsFilteredBox() {
+  const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(4);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null); // Make it accept Project or null
+  const [isMobile, setIsMobile] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  // Function to open the dialog
+  const categoryCounts = categories.map((cat) => ({
+    type: cat,
+    count:
+      cat === "All"
+        ? projectsData.length
+        : projectsData.filter((p) => p.tag.includes(cat)).length,
+  }));
+
+  const handleCategoryClick = (cat: string) => {
+    setActiveCategory(cat);
+    setVisibleCount(4);
+    setIsExpanded(false);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleShowMore = () => {
+    if (isMobile) {
+      setVisibleCount(isExpanded ? 3 : 6);
+    } else {
+      setVisibleCount(isExpanded ? 4 : filtered.length);
+    }
+    setIsExpanded((prev) => !prev);
+  };
+
   const openDialog = (project: Project) => {
-    setSelectedProject(project);
+    setSelectedProject(project); // Should work now with correct type
     setIsDialogOpen(true);
   };
 
-  // Function to close the dialog
   const closeDialog = () => {
-    setIsDialogOpen(false);
     setSelectedProject(null);
+    setIsDialogOpen(false);
   };
 
+  const filtered =
+    activeCategory === "All"
+      ? projectsData
+      : projectsData.filter((p) => p.tag.includes(activeCategory));
+
+  const visibleProjects = filtered.slice(0, visibleCount);
+
   return (
-    <Tabs defaultValue="All" className="space-y-4">
-      <TabsList className="w-full flex flex-wrap gap-2 justify-start overflow-x-auto h-12">
-        {categories.map((cat) => (
-          <TabsTrigger
-            key={cat}
-            value={cat}
-            className="capitalize cursor-pointer 
-            data-[state=active]:text-white 
-            data-[state=active]:bg-primary
-            dark:data-[state=active]:text-black 
-            dark:data-[state=active]:bg-primary"
+    <section className="space-y-6 p-6 rounded-xl shadow-none border-0 bg-gray-100 dark:bg-neutral-900/50">
+      <div className="flex flex-wrap gap-4 justify-center">
+        {categoryCounts.map(({ type, count }) => (
+          <div
+            key={type}
+            onClick={() => handleCategoryClick(type)}
+            className={`lg:w-30 lg:h-20 md:w-30 md:h-20 sm:w-30 sm:h-20 w-20 h-15 flex flex-col items-center justify-center rounded-lg border cursor-pointer ${
+              activeCategory === type
+                ? "border-primary bg-muted/30 dark:bg-muted/20"
+                : "border-border bg-muted/20 dark:bg-muted/10"
+            } transition-colors duration-200`}
           >
-            {cat}
-          </TabsTrigger>
+            <span className="text-lg font-bold text-primary">{count}</span>
+            <span className="text-xs text-muted-foreground capitalize">
+              {type}
+            </span>
+          </div>
         ))}
-      </TabsList>
+      </div>
 
-      {categories.map((cat) => {
-        const filtered =
-          cat === "All"
-            ? projectsData
-            : projectsData.filter((p) => p.tag.includes(cat));
-
-        const visibleProjects = filtered.slice(0, visibleCount);
-        const hasMore = visibleCount < filtered.length;
-
-        return (
-          <TabsContent key={cat} value={cat}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-              {visibleProjects.map((project: Project) => (
-                <Card key={project.id} className="overflow-hidden p-0">
-                  {/* Image section */}
-                  <div className="relative w-full h-40 m-0">
-                    <Image
-                      src={project.images[0]}
-                      alt={project.title}
-                      loading="lazy"
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                      className="object-cover rounded-t-xl"
-                    />
-                  </div>
-                  <CardContent className="p-4 space-y-2">
-                    {/* Project title */}
-                    <h3 className="text-lg font-semibold text-primary dark:text-primary">
-                      {project.title}
-                    </h3>
-
-                    {/* Project description */}
-                    <p className="text-sm text-muted-foreground line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    {/* Read More button */}
-                    <div className="flex justify-end">
-                      <span
-                        className="text-sm text-primary cursor-pointer"
-                        onClick={() => openDialog(project)}
-                      >
-                        Read More
-                      </span>
-                    </div>
-
-                    {/* Buttons section */}
-                    <div className="flex gap-2 pt-2">
-                      <Button size="sm" variant="outline" asChild>
-                        <a href={project.gitUrl} target="_blank">
-                          GitHub
-                        </a>
-                      </Button>
-                      {project.previewUrl && project.previewUrl !== "#" && (
-                        <Button size="sm" variant="secondary" asChild>
-                          <a href={project.previewUrl} target="_blank">
-                            Preview
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+      {/* Project cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        {visibleProjects.map((project) => (
+          <Card
+            key={project.id}
+            className="overflow-hidden hover:scale-[1.02] transition-transform p-0 cursor-pointer shadow-none"
+            onClick={() => openDialog(project)} // Pass the typed project
+          >
+            <div className="relative w-full h-40">
+              <Image
+                src={project.images[0]}
+                alt={project.title}
+                fill
+                className="object-cover rounded-t-xl"
+              />
             </div>
-
-            {/* Show more / Show less button */}
-            {filtered.length > 4 && (
-              <div className="flex justify-center pt-6">
-                <Button
-                  variant="outline"
-                  onClick={() =>
-                    setVisibleCount((prev) => (hasMore ? prev + 4 : 4))
-                  }
-                >
-                  {hasMore ? "Show More" : "Show Less"}
-                </Button>
+            <CardContent className="p-4 space-y-2 ">
+              <h3 className="text-lg font-semibold text-primary">
+                {project.title}
+              </h3>
+              <p className="text-sm text-muted-foreground line-clamp-3">
+                {project.description}
+              </p>
+              <div className="flex justify-between items-center pt-2">
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" asChild>
+                    <a href={project.gitUrl} target="_blank">
+                      GitHub
+                    </a>
+                  </Button>
+                  <Button size="sm" variant="secondary" asChild>
+                    <a href={project.previewUrl} target="_blank">
+                      Preview
+                    </a>
+                  </Button>
+                </div>
               </div>
-            )}
-          </TabsContent>
-        );
-      })}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
 
-      {/* Dialog for Read More */}
+      {/* Show More / Less */}
+      {filtered.length > visibleCount && (
+        <div className="flex justify-center pt-6">
+          <Button variant="outline" onClick={toggleShowMore}>
+            {isExpanded ? "Show Less" : isMobile ? "Show More" : "Show All"}
+          </Button>
+        </div>
+      )}
+
+      {/* Dialog */}
       {isDialogOpen && selectedProject && (
         <ProjectDetailsDialog project={selectedProject} onClose={closeDialog} />
       )}
-    </Tabs>
+    </section>
   );
 }
