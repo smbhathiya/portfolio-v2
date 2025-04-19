@@ -15,12 +15,17 @@ const transitionVariants = {
     },
     visible: {
       opacity: 1,
-      filter: "blur(0px)",
+      filter: "blur(0px)", 
       y: 0,
       transition: {
-        type: "spring",
-        bounce: 0.3,
+        type: "tween", 
+        ease: "easeOut",
         duration: 1.5,
+        filter: {
+          type: "tween",
+          ease: "easeOut",
+          duration: 1.5,
+        },
       },
     },
   },

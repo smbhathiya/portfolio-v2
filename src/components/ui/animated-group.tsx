@@ -1,6 +1,6 @@
 "use client";
 import { JSX, ReactNode } from "react";
-import { motion, Variants } from "motion/react";
+import { motion, Variants } from "framer-motion";
 import React from "react";
 
 export type PresetType =
@@ -51,12 +51,39 @@ const presetVariants: Record<PresetType, Variants> = {
     visible: { scale: 1 },
   },
   blur: {
-    hidden: { filter: "blur(4px)" },
-    visible: { filter: "blur(0px)" },
+    hidden: { filter: "blur(4px)", opacity: 0 },
+    visible: {
+      filter: "blur(0px)",
+      opacity: 1,
+      transition: {
+        type: "tween",
+        ease: "easeOut",
+        duration: 0.4,
+        filter: {
+          type: "tween",
+          ease: "easeOut",
+          duration: 0.4,
+        },
+      },
+    },
   },
   "blur-slide": {
-    hidden: { filter: "blur(4px)", y: 20 },
-    visible: { filter: "blur(0px)", y: 0 },
+    hidden: { filter: "blur(4px)", y: 20, opacity: 0 },
+    visible: {
+      filter: "blur(0px)",
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "tween",
+        ease: "easeOut",
+        duration: 0.4,
+        filter: {
+          type: "tween",
+          ease: "easeOut",
+          duration: 0.4,
+        },
+      },
+    },
   },
   zoom: {
     hidden: { scale: 0.5 },
