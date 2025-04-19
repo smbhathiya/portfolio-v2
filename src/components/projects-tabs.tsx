@@ -7,13 +7,24 @@ import Image from "next/image";
 import projectsData from "@/data/projects";
 import ProjectDetailsDialog from "./project-details-dialog";
 
+// Update the Project type
+interface Project {
+  id: number; // id as number
+  title: string;
+  description: string;
+  images: string[];
+  tag: string[];
+  gitUrl: string;
+  previewUrl: string; // Make previewUrl required
+}
+
 const categories = ["All", "Web", "Desktop", "Mobile"];
 
 export default function ProjectsFilteredBox() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(4);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null); // Make it accept Project or null
   const [isMobile, setIsMobile] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -49,8 +60,8 @@ export default function ProjectsFilteredBox() {
     setIsExpanded((prev) => !prev);
   };
 
-  const openDialog = (project: any) => {
-    setSelectedProject(project);
+  const openDialog = (project: Project) => {
+    setSelectedProject(project); // Should work now with correct type
     setIsDialogOpen(true);
   };
 
@@ -93,7 +104,7 @@ export default function ProjectsFilteredBox() {
           <Card
             key={project.id}
             className="overflow-hidden hover:scale-[1.02] transition-transform p-0 cursor-pointer shadow-none"
-            onClick={() => openDialog(project)}
+            onClick={() => openDialog(project)} // Pass the typed project
           >
             <div className="relative w-full h-40">
               <Image
@@ -117,13 +128,11 @@ export default function ProjectsFilteredBox() {
                       GitHub
                     </a>
                   </Button>
-                  {project.previewUrl && project.previewUrl !== "#" && (
-                    <Button size="sm" variant="secondary" asChild>
-                      <a href={project.previewUrl} target="_blank">
-                        Preview
-                      </a>
-                    </Button>
-                  )}
+                  <Button size="sm" variant="secondary" asChild>
+                    <a href={project.previewUrl} target="_blank">
+                      Preview
+                    </a>
+                  </Button>
                 </div>
               </div>
             </CardContent>
