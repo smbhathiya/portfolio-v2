@@ -77,6 +77,7 @@ export default function ProjectsTabs() {
                       alt={project.title}
                       loading="lazy"
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       className="object-cover rounded-t-xl"
                     />
                   </div>
