@@ -1,6 +1,14 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
+import { useState } from "react";
 
 type ProjectDetailsDialogProps = {
   project: {
@@ -14,7 +22,16 @@ type ProjectDetailsDialogProps = {
   onClose: () => void;
 };
 
-const ProjectDetailsDialog = ({ project, onClose }: ProjectDetailsDialogProps) => {
+const ProjectDetailsDialog = ({
+  project,
+  onClose,
+}: ProjectDetailsDialogProps) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+  };
+
   return (
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl">
@@ -22,18 +39,25 @@ const ProjectDetailsDialog = ({ project, onClose }: ProjectDetailsDialogProps) =
           <DialogTitle>{project.title}</DialogTitle>
         </DialogHeader>
 
-        {/* Image section */}
         <div className="relative w-full h-60 mb-4">
+          {!isImageLoaded && (
+            <Skeleton className="absolute inset-0 rounded-xl" />
+          )}
           <Image
             src={project.images[0]}
             alt={project.title}
             fill
-            className="object-cover rounded-xl"
+            className={`object-cover rounded-xl ${
+              isImageLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoadingComplete={handleImageLoad}
           />
         </div>
 
         {/* Project description */}
-        <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+        <p className="text-sm text-muted-foreground mb-4">
+          {project.description}
+        </p>
 
         {/* Buttons section */}
         <div className="flex gap-2 pt-4">
