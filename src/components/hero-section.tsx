@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/ui/text-effect";
@@ -15,10 +16,10 @@ const transitionVariants = {
     },
     visible: {
       opacity: 1,
-      filter: "blur(0px)", 
+      filter: "blur(0px)",
       y: 0,
       transition: {
-        type: "tween", 
+        type: "tween",
         ease: "easeOut",
         duration: 1.5,
         filter: {
@@ -47,85 +48,85 @@ export default function HeroSection() {
         <section>
           <div className="relative pt-24 md:pt-36">
             <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
-            <div className="mx-auto max-w-7xl px-6">
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                <AnimatedGroup
-                  variants={{
-                    container: {
-                      visible: {
-                        transition: {
-                          staggerChildren: 0.05,
-                          delayChildren: 0.5,
-                        },
+            <div className="mx-auto max-w-5xl px-4">
+              <AnimatedGroup
+                variants={{
+                  container: {
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05,
+                        delayChildren: 0.5,
                       },
                     },
-                    ...transitionVariants,
-                  }}
-                  className="mt-5 flex flex-col items-center justify-center gap-2 md:flex-row"
-                >
-                  <div key={1}>
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-2xl px-5 text-2xl p-6 dark:text-black"
-                    >
-                      <span className="text-nowrap">Bhathiya Lakshan</span>
-                    </Button>
+                  },
+                  ...transitionVariants,
+                }}
+                className="flex flex-col lg:flex-row items-center justify-between gap-8"
+              >
+                {/* Image Section */}
+                <div className="flex-shrink-0 relative w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] group mb-10 shadow-none">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-60 group-hover:opacity-70 transition-opacity duration-300">
+                    <div className="w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] bg-primary rounded-full blur-lg"></div>
                   </div>
-                </AnimatedGroup>
+                  <Image
+                    src="/source/p3.webp"
+                    alt="Bhathiya Lakshan"
+                    width={300}
+                    height={300}
+                    className="relative w-full h-full object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
 
-                <TextEffect
-                  preset="fade-in-blur"
-                  speedSegment={0.3}
-                  as="h1"
-                  className="mt-2 text-balance text-6xl md:text-7xl lg:mt-2 xl:text-[5.25rem]"
-                >
-                  Building the Future With Code & Creativity
-                </TextEffect>
-                <TextEffect
-                  per="line"
-                  preset="fade-in-blur"
-                  speedSegment={0.3}
-                  delay={0.5}
-                  as="p"
-                  className="mx-auto mt-8 max-w-2xl text-balance text-lg"
-                >
-                  Building modern web applications with .NET, React, Next.js,
-                  and creativity
-                </TextEffect>
-
-                <AnimatedGroup
-                  variants={{
-                    container: {
-                      visible: {
-                        transition: {
-                          staggerChildren: 0.05,
-                          delayChildren: 0.75,
+                {/* Caption and Button Section */}
+                <div className="text-center lg:text-left max-w-md">
+                  <TextEffect
+                    preset="fade-in-blur"
+                    speedSegment={0.3}
+                    as="h1"
+                    className="text-4xl md:text-5xl lg:text-5xl font-bold whitespace-nowrap"
+                  >
+                    Bhathiya Lakshan
+                  </TextEffect>
+                  <TextEffect
+                    per="line"
+                    preset="fade-in-blur"
+                    speedSegment={0.3}
+                    delay={0.5}
+                    as="p"
+                    className="mt-4 text-lg md:text-xl dark:text-gray-300 "
+                  >
+                    Let's build the Future With Code & Creativity. Crafting
+                    modern web applications with .NET, React, Next.js, and a
+                    passion for innovation.
+                  </TextEffect>
+                  <AnimatedGroup
+                    variants={{
+                      container: {
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.05,
+                            delayChildren: 0.75,
+                          },
                         },
                       },
-                    },
-                    ...transitionVariants,
-                  }}
-                  className="mt-5 flex flex-col items-center justify-center gap-2 md:flex-row"
-                >
-                  <div
-                    key={1}
-                    className=" rounded-[calc(var(--radius-xl)+0.125rem)] "
+                      ...transitionVariants,
+                    }}
+                    className="mt-8 flex justify-center lg:justify-start"
                   >
                     <Button
                       asChild
-                      size="lg"
                       variant="outline"
-                      className="rounded-xl px-5 text-base"
+                      size="lg"
+                      className="rounded-xl px-6  duration-300"
                     >
-                      <Link href="#about">
-                        <span className="text-nowrap">About Me</span>
+                      <Link href="#contact">
+                        <span className="text-nowrap">Contact Me</span>
                         <ChevronRight className="ml-2 inline-block size-4" />
                       </Link>
                     </Button>
-                  </div>
-                </AnimatedGroup>
-              </div>
+                  </AnimatedGroup>
+                </div>
+              </AnimatedGroup>
             </div>
           </div>
         </section>

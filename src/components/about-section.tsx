@@ -1,9 +1,11 @@
 "use client";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatedGroup } from "./ui/animated-group";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
@@ -34,44 +36,34 @@ export default function AboutSection() {
         }}
       >
         <div className="mx-auto max-w-6xl">
-          <Card className="flex flex-col md:flex-row items-center gap-8 p-6 md:p-10 rounded-2xl shadow-lg">
-            <div className="flex-shrink-0 relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[250px] h-[250px] bg-primary rounded-full"></div>
-              </div>
-              <Image
-                src="/source/p3.webp"
-                alt="Bhathiya Lakshan"
-                width={250}
-                height={250}
-                className="relative "
-              />
-            </div>
-
+          <Card className="flex flex-col md:flex-row items-center gap-8 p-6 md:p-10 rounded-2xl shadow-none border-0 bg-gray-100 dark:bg-neutral-900/50">
             {/* Right side - about content */}
-            <CardContent className="text-center md:text-left space-y-4">
+            <CardContent className="text-center md:text-left space-y-4 items-center">
               <h2 className="text-3xl font-bold text-primary dark:text-primary">
-                Hi, {greeting}!
-                <br />
-                I&apos;m Bhathiya Lakshan
+                Hi, {greeting}!{" "}
+                <span className="text-gray-700 dark:text-gray-400 font-bold">
+                  I'm Bhathiya Lakshan
+                </span>
               </h2>
+
               <p className="text-muted-foreground text-lg">
-                I&apos;m a Full Stack Developer, passionate about building modern,
-                high-performance platforms with clean architecture. I specialize
-                in TypeScript, Next.js, Prisma, and .NET Entity Framework Core —
-                and love creating systems that scale beautifully.
+                I&apos;m a Full Stack Developer, passionate about building
+                modern, high-performance platforms with clean architecture. I
+                specialize in TypeScript, Next.js, Prisma, and .NET Entity
+                Framework Core — and love creating systems that scale
+                beautifully.
               </p>
               <p className="text-muted-foreground">
-                Whether it&apos;s a full-stack platform, a CMS, a dashboard, or an
-                API integration — I aim to deliver efficient, secure, and
+                Whether it&apos;s a full-stack platform, a CMS, a dashboard, or
+                an API integration — I aim to deliver efficient, secure, and
                 maintainable solutions for real-world problems
               </p>
-              <Button
-                className="dark:text-black cursor-pointer"
-                onClick={() => window.open(cvLink)}
-              >
-                Download CV
-              </Button>
+              <Link href="#projects">
+                <Button className="dark:text-black cursor-pointer">
+                  View My Projects
+                  <ChevronRight className="ml-2 inline-block size-4" />
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
