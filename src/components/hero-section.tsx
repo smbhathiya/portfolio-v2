@@ -95,7 +95,7 @@ export default function HeroSection() {
                     as="p"
                     className="mt-4 text-lg md:text-xl dark:text-gray-300 "
                   >
-                    Let's build the Future With Code & Creativity. Crafting
+                    Let&apos;s build the Future With Code & Creativity. Crafting
                     modern web applications with .NET, React, Next.js, and a
                     passion for innovation.
                   </TextEffect>

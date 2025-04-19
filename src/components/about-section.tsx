@@ -9,7 +9,6 @@ import { ChevronRight } from "lucide-react";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
-  const cvLink = process.env.NEXT_PUBLIC_CV_URL!;
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -42,7 +41,7 @@ export default function AboutSection() {
               <h2 className="text-3xl font-bold text-primary dark:text-primary">
                 Hi, {greeting}!{" "}
                 <span className="text-gray-700 dark:text-gray-400 font-bold">
-                  I'm Bhathiya Lakshan
+                  I&apos;m Bhathiya Lakshan
                 </span>
               </h2>
 
