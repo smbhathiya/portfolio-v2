@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Bhathiya Lakshan | Web Application Developer | Portfolio",
     description:
       "Experienced in .NET Web API, Next.js, React, and Node.js. Check out my portfolio to see my work.",
-    url: "https://bhathiya-lakshan.vercel.app/",
+    url: "https://bhathiya-.dev/",
     siteName: "Bhathiya Lakshan Portfolio",
     locale: "en_US",
     type: "website",
