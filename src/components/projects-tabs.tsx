@@ -7,15 +7,14 @@ import Image from "next/image";
 import projectsData from "@/data/projects";
 import ProjectDetailsDialog from "./project-details-dialog";
 
-// Update the Project type
 interface Project {
-  id: number; // id as number
+  id: number;
   title: string;
   description: string;
   images: string[];
   tag: string[];
   gitUrl: string;
-  previewUrl: string; // Make previewUrl required
+  previewUrl: string;
 }
 
 const categories = ["All", "Web", "Desktop", "Mobile"];
@@ -24,16 +23,19 @@ export default function ProjectsFilteredBox() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(4);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null); // Make it accept Project or null
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Sort projectsData by id in descending order
+  const sortedProjects = [...projectsData].sort((a, b) => b.id - a.id);
 
   const categoryCounts = categories.map((cat) => ({
     type: cat,
     count:
       cat === "All"
-        ? projectsData.length
-        : projectsData.filter((p) => p.tag.includes(cat)).length,
+        ? sortedProjects.length
+        : sortedProjects.filter((p) => p.tag.includes(cat)).length,
   }));
 
   const handleCategoryClick = (cat: string) => {
@@ -61,7 +63,7 @@ export default function ProjectsFilteredBox() {
   };
 
   const openDialog = (project: Project) => {
-    setSelectedProject(project); // Should work now with correct type
+    setSelectedProject(project);
     setIsDialogOpen(true);
   };
 
@@ -72,8 +74,8 @@ export default function ProjectsFilteredBox() {
 
   const filtered =
     activeCategory === "All"
-      ? projectsData
-      : projectsData.filter((p) => p.tag.includes(activeCategory));
+      ? sortedProjects
+      : sortedProjects.filter((p) => p.tag.includes(activeCategory));
 
   const visibleProjects = filtered.slice(0, visibleCount);
 
@@ -104,7 +106,7 @@ export default function ProjectsFilteredBox() {
           <Card
             key={project.id}
             className="overflow-hidden hover:scale-[1.02] transition-transform p-0 cursor-pointer shadow-none"
-            onClick={() => openDialog(project)} // Pass the typed project
+            onClick={() => openDialog(project)}
           >
             <div className="relative w-full h-40">
               <Image
@@ -114,7 +116,7 @@ export default function ProjectsFilteredBox() {
                 className="object-cover rounded-t-xl"
               />
             </div>
-            <CardContent className="p-4 space-y-2 ">
+            <CardContent className="p-4 space-y-2">
               <h3 className="text-lg font-semibold text-primary">
                 {project.title}
               </h3>

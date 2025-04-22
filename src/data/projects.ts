@@ -40,6 +40,16 @@ const projectsData = [
     gitUrl: "https://github.com/smbhathiya/CineplexCinemaWeb.git",
     previewUrl: "#",
   },
+  {
+    id: 5,
+    title: "Bliss Café – Coffee Shop Web App",
+    description:
+      "Bliss Café is a modern and responsive coffee shop website built using Next.js, Tailwind CSS, and ShadCN UI. This project showcases a sleek landing page with a floating navbar, hero section, and a clean UI that aligns with system themes. The site is designed to attract customers and provide information about the café, its menu, and location.",
+    images: ["/source/projects/blisscafe.png"],
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/smbhathiya/bliss-cafe.git",
+    previewUrl: "https://blisscafe.bhathiya.dev",
+  },
 ];
 
 export default projectsData;
