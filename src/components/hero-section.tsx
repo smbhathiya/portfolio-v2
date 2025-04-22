@@ -69,7 +69,7 @@ export default function HeroSection() {
                     <div className="w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] bg-primary rounded-full blur-lg"></div>
                   </div>
                   <Image
-                    src="/source/p3.webp"
+                    src="/source/p3.png"
                     alt="Bhathiya Lakshan"
                     width={300}
                     height={300}
