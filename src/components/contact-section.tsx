@@ -149,7 +149,7 @@ export default function ContactSection() {
         </div>
 
         {/* Right side - Contact Actions */}
-        <Card className=" p-6 rounded-2xl shadow-lg space-y-4">
+        <Card className=" p-6 rounded-2xl shadow-lg space-y-4 dark:bg-background">
           <h3 className="text-xl font-semibold">Get in Touch</h3>
           <p className="text-muted-foreground">
             Prefer direct contact? Feel free to email or WhatsApp me:
