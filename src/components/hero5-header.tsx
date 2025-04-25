@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
 
 const menuItems = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
