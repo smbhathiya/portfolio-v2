@@ -50,6 +50,16 @@ const projectsData = [
     gitUrl: "https://github.com/smbhathiya/bliss-cafe.git",
     previewUrl: "https://blisscafe.bhathiya.dev",
   },
+  {
+    id: 6,
+    title: "Today Weather",
+    description:
+      "A simple and intuitive weather app that provides current weather information and forecasts. Users can search for a city or allow the app to automatically detect their location. The app displays detailed weather data, including temperature, humidity, wind speed, and weather conditions for the current day and the next five days. Built using Next.js, TypeScript, Tailwind CSS, and shadcn/ui, with real-time data powered by the OpenWeather API.",
+    images: ["/source/projects/todayweather.png"],
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/smbhathiya/today-weather.git",
+    previewUrl: "https://todayweather.bhathiya.dev",
+  },
 ];
 
 export default projectsData;
