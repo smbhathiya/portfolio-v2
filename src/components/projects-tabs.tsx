@@ -17,7 +17,7 @@ interface Project {
   previewUrl: string;
 }
 
-const categories = ["All", "Web", "Desktop", "Mobile"];
+const categories = ["All", "Web", "Desktop"];
 
 export default function ProjectsFilteredBox() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -27,7 +27,6 @@ export default function ProjectsFilteredBox() {
   const [isMobile, setIsMobile] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Sort projectsData by id in descending order
   const sortedProjects = [...projectsData].sort((a, b) => b.id - a.id);
 
   const categoryCounts = categories.map((cat) => ({
@@ -106,7 +105,6 @@ export default function ProjectsFilteredBox() {
           <Card
             key={project.id}
             className="overflow-hidden hover:scale-[1.02] transition-transform p-0 cursor-pointer shadow-none"
-            onClick={() => openDialog(project)}
           >
             <div className="relative w-full h-40">
               <Image
@@ -114,15 +112,19 @@ export default function ProjectsFilteredBox() {
                 alt={project.title}
                 fill
                 className="object-cover rounded-t-xl"
+                onClick={() => openDialog(project)}
               />
             </div>
-            <CardContent className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-primary">
-                {project.title}
-              </h3>
-              <p className="text-sm text-muted-foreground line-clamp-3">
-                {project.description}
-              </p>
+            <CardContent className="p-4 space-y-2 ">
+              <div onClick={() => openDialog(project)}>
+                <h3 className="text-lg font-semibold text-primary ">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-3">
+                  {project.description}
+                </p>
+              </div>
+
               <div className="flex justify-between items-center pt-2">
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline" asChild>

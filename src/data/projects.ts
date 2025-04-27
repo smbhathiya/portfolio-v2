@@ -42,7 +42,7 @@ const projectsData = [
   },
   {
     id: 5,
-    title: "Bliss Café – Coffee Shop Web App",
+    title: "Bliss Café – Coffee Shop ",
     description:
       "Bliss Café is a modern and responsive coffee shop website built using Next.js, Tailwind CSS, and ShadCN UI. This project showcases a sleek landing page with a floating navbar, hero section, and a clean UI that aligns with system themes. The site is designed to attract customers and provide information about the café, its menu, and location.",
     images: ["/source/projects/blisscafe.png"],
@@ -59,6 +59,16 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/smbhathiya/today-weather.git",
     previewUrl: "https://todayweather.bhathiya.dev",
+  },
+  {
+    id: 7,
+    title: "AI Image Generator",
+    description:
+      "An AI-powered image generator app that transforms creative prompts into stunning visuals. Users can input any text prompt to generate unique images using Google's Gemini API. The app features user authentication via Clerk, a modern UI built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, and stores generated images securely in Cloudinary. Seamlessly designed for a smooth and engaging user experience.",
+    images: ["/source/projects/aiimagegenerator.png"],
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/smbhathiya/ai-image-generator.git",
+    previewUrl: "https://aiig.bhathiya.dev",
   },
 ];
 
