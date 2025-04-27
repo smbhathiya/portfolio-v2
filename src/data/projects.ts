@@ -60,6 +60,16 @@ const projectsData = [
     gitUrl: "https://github.com/smbhathiya/today-weather.git",
     previewUrl: "https://todayweather.bhathiya.dev",
   },
+  {
+    id: 7,
+    title: "AI Image Generator",
+    description:
+      "An AI-powered image generator app that transforms creative prompts into stunning visuals. Users can input any text prompt to generate unique images using Google's Gemini API. The app features user authentication via Clerk, a modern UI built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, and stores generated images securely in Cloudinary. Seamlessly designed for a smooth and engaging user experience.",
+    images: ["/source/projects/aiimagegenerator.png"],
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/smbhathiya/ai-image-generator.git",
+    previewUrl: "https://aiig.bhathiya.dev",
+  },
 ];
 
 export default projectsData;
