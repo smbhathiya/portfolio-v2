@@ -1,11 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Github, Linkedin, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { HeroHeader } from "@/components/hero5-header";
+
+// Define fallback links for social profiles
+const github = process.env.NEXT_PUBLIC_GITHUB_URL || "#";
+const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL || "#";
+const resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL || "/resume.pdf";
 
 const transitionVariants = {
   item: {
@@ -34,7 +39,15 @@ const transitionVariants = {
 
 export default function HeroSection() {
   return (
-    <section id="hero">
+    <section id="hero" className="relative overflow-hidden">
+      {/* Background animation elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(var(--primary),0.15),transparent_70%)]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-primary/5 rounded-full blur-xl"></div>
+      </div>
+
       <HeroHeader />
       <main className="overflow-hidden">
         <div
@@ -61,44 +74,71 @@ export default function HeroSection() {
                   },
                   ...transitionVariants,
                 }}
-                className="flex flex-col lg:flex-row items-center justify-between gap-8"
+                className="flex flex-col lg:flex-row items-center justify-between gap-12"
               >
                 {/* Image Section */}
-                <div className="flex-shrink-0 relative w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] group mb-10 shadow-none">
-                  <div className="absolute inset-0 flex items-center justify-center opacity-60 group-hover:opacity-70 transition-opacity duration-300">
-                    <div className="w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] bg-primary rounded-full blur-lg"></div>
+                <div className="flex-shrink-0 relative w-[280px] h-[280px] lg:w-[320px] lg:h-[320px] group mb-10 float-animation">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-60 group-hover:opacity-80 transition-opacity duration-500">
+                    <div className="w-[280px] h-[280px] lg:w-[320px] lg:h-[320px] bg-gradient-to-tr from-primary/70 to-accent/70 rounded-full blur-2xl"></div>
                   </div>
-                  <Image
-                    src="/source/p3.png"
-                    alt="Bhathiya Lakshan"
-                    width={300}
-                    height={300}
-                    className="relative w-full h-full object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <div className="absolute inset-0 rounded-full overflow-hidden glow-effect">
+                    <Image
+                      src="/source/p3.png"
+                      alt="Bhathiya Lakshan"
+                      width={320}
+                      height={320}
+                      className="relative w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 rounded-full"
+                    />
+                  </div>
                 </div>
 
                 {/* Caption and Button Section */}
                 <div className="text-center lg:text-left max-w-md">
-                  <TextEffect
-                    preset="fade-in-blur"
-                    speedSegment={0.3}
-                    as="h1"
-                    className="text-4xl md:text-5xl lg:text-5xl font-bold whitespace-nowrap"
-                  >
-                    Bhathiya Lakshan
-                  </TextEffect>
+                  <div className="mb-2 inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary">
+                    <span className="text-sm font-medium">Full Stack Developer</span>
+                  </div>
+                  
                   <TextEffect
                     per="line"
                     preset="fade-in-blur"
                     speedSegment={0.3}
                     delay={0.5}
                     as="p"
-                    className="mt-4 text-lg md:text-xl dark:text-gray-300 "
+                    className="mt-4 text-lg md:text-xl dark:text-gray-300"
                   >
                     Let&apos;s build the Future With Code & Creativity. Crafting
                     modern web applications with .NET, React, Next.js, and a
                     passion for innovation.
                   </TextEffect>
+                  
+                  {/* Social Links */}
+                  <div className="mt-6 flex justify-center lg:justify-start space-x-4">
+                    <a 
+                      href={github}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors duration-300"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a 
+                      href={linkedin}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors duration-300"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a 
+                      href={resumeUrl}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors duration-300"
+                    >
+                      <FileText className="w-5 h-5" />
+                    </a>
+                  </div>
+                  
                   <AnimatedGroup
                     variants={{
                       container: {
@@ -111,13 +151,25 @@ export default function HeroSection() {
                       },
                       ...transitionVariants,
                     }}
-                    className="mt-8 flex justify-center lg:justify-start"
+                    className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4"
                   >
+                    <Button
+                      asChild
+                      variant="default"
+                      size="lg"
+                      className="rounded-xl px-6 bg-primary hover:bg-primary/90 hover-scale shadow-lg shadow-primary/20"
+                    >
+                      <Link href="#projects">
+                        <span className="text-nowrap">View Projects</span>
+                        <ChevronRight className="ml-2 inline-block size-4" />
+                      </Link>
+                    </Button>
+                    
                     <Button
                       asChild
                       variant="outline"
                       size="lg"
-                      className="rounded-xl px-6  duration-300"
+                      className="rounded-xl px-6 duration-300 border-primary/20 hover:border-primary/50 hover-scale backdrop-blur-sm"
                     >
                       <Link href="#contact">
                         <span className="text-nowrap">Contact Me</span>
