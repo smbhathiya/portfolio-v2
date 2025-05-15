@@ -113,8 +113,8 @@ export default function FooterSection() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Email: contact@bhathiya.dev</li>
-              <li>Location: Colombo, Sri Lanka</li>
+              <li>Email: smbhathiya@gmail.com</li>
+              <li>Location: Kadawatha, Sri Lanka</li>
               <li>Available for Remote Work</li>
             </ul>
             
