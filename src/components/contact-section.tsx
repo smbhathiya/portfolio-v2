@@ -34,7 +34,7 @@ export default function ContactSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 gradient-text inline-block">Get In Touch</h2>
           <div className="section-divider max-w-[100px] mx-auto"></div>
           <p className="max-w-2xl mx-auto text-muted-foreground mt-6">
-            Have a project in mind or just want to chat? I'm always open to new opportunities and connections
+            Have a project in mind or just want to chat? I&apos;m always open to new opportunities and connections
           </p>
         </div>
       
@@ -65,9 +65,9 @@ export default function ContactSection() {
           {/* Left side - Message + Social Links */}
           <div className="space-y-8">
             <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-6 rounded-2xl border border-primary/10 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Let's Connect</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Let&apos;s Connect</h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                I'm currently open to new opportunities. Whether you have a project
+                I&apos;m currently open to new opportunities. Whether you have a project
                 in mind, a question, or just want to say hello — feel free to reach
                 out!
               </p>

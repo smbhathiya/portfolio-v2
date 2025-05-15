@@ -10,9 +10,13 @@ export default function BackToTop() {
   // Debounced scroll handler for better performance
   const toggleVisibility = useCallback(() => {
     if (window.scrollY > 300) {
-      !isVisible && setIsVisible(true);
+      if (!isVisible) {
+        setIsVisible(true);
+      }
     } else {
-      isVisible && setIsVisible(false);
+      if (isVisible) {
+        setIsVisible(false);
+      }
     }
   }, [isVisible]);
 

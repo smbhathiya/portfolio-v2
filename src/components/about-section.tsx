@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatedGroup } from "./ui/animated-group";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { ChevronRight, Code, Globe, Database, Star } from "lucide-react";
+import { ChevronRight, Code, Globe, Database } from "lucide-react";
 
 export default function AboutSection() {
   const [greeting, setGreeting] = useState("");
