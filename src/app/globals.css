@@ -285,3 +285,73 @@ html {
 .pause-animation {
   animation-play-state: paused;
 }
+
+/* Animation performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hardware acceleration for animations */
+.animate-gpu {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Add to floating and glowing elements for better performance */
+.glow-effect, .float-animation {
+  will-change: transform, box-shadow;
+}
+
+/* Improve scrolling performance */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Help prevent content layout shifts */
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Preload animations to prevent flicker on page load */
+@keyframes preload {
+  from { opacity: 0; }
+  to { opacity: 0; }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: var(--background);
+  z-index: 9999;
+  pointer-events: none;
+  animation: preload 0.1s linear;
+  animation-fill-mode: forwards;
+}
+
+/* Improved link focus states for accessibility */
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Improved transitions for interactive elements */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Improved code styling */
+code, pre {
+  font-family: var(--font-mono);
+}
