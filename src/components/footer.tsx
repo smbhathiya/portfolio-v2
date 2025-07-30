@@ -87,7 +87,8 @@ export default function FooterSection() {
               <h2 className="text-xl font-bold gradient-text">BL</h2>
             </Link>
             <p className="text-muted-foreground text-sm">
-              Building innovative web applications with modern technologies and a passion for clean code.
+              Building innovative web applications with modern technologies and
+              a passion for clean code.
             </p>
           </div>
 
@@ -113,11 +114,11 @@ export default function FooterSection() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Email: smbhathiya@gmail.com</li>
+              <li>Email: info@bhathiya.dev</li>
               <li>Location: Kadawatha, Sri Lanka</li>
               <li>Available for Remote Work</li>
             </ul>
-            
+
             {/* Social icons */}
             <div className="flex flex-wrap gap-3 mt-6">
               {socialLinks.map((social, index) => (
@@ -173,7 +174,7 @@ export default function FooterSection() {
           <span className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} Bhathiya Lakshan. All rights reserved.
           </span>
-          
+
           <Button
             onClick={scrollToTop}
             variant="outline"

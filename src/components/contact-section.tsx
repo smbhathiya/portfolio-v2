@@ -6,7 +6,7 @@ import { Card } from "./ui/card";
 import { AnimatedGroup } from "./ui/animated-group";
 
 // Set specific contact information
-const email = "smbhathiya@gmail.com";
+const email = "info@bhathiya.dev";
 const whatsApp = "94723095865";
 
 // Social links
