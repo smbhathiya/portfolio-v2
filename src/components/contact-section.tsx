@@ -7,7 +7,7 @@ import { AnimatedGroup } from "./ui/animated-group";
 
 // Set specific contact information
 const email = "smbhathiya@gmail.com";
-const whatsApp = "94768941816";
+const whatsApp = "94723095865";
 
 // Social links
 const twitter = process.env.NEXT_PUBLIC_TWITTER_URL || "#";
@@ -28,16 +28,19 @@ export default function ContactSection() {
         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/5 rounded-full blur-xl"></div>
         <div className="absolute bottom-1/4 left-1/4 w-[200px] h-[200px] bg-accent/5 rounded-full blur-lg"></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 gradient-text inline-block">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 gradient-text inline-block">
+            Get In Touch
+          </h2>
           <div className="section-divider max-w-[100px] mx-auto"></div>
           <p className="max-w-2xl mx-auto text-muted-foreground mt-6">
-            Have a project in mind or just want to chat? I&apos;m always open to new opportunities and connections
+            Have a project in mind or just want to chat? I&apos;m always open to
+            new opportunities and connections
           </p>
         </div>
-      
+
         <AnimatedGroup
           variants={{
             container: {
@@ -49,32 +52,36 @@ export default function ContactSection() {
             },
             item: {
               hidden: { opacity: 0, y: 20 },
-              visible: { 
-                opacity: 1, 
+              visible: {
+                opacity: 1,
                 y: 0,
                 transition: {
                   type: "spring",
                   stiffness: 260,
-                  damping: 20
-                }
-              }
-            }
+                  damping: 20,
+                },
+              },
+            },
           }}
           className="grid md:grid-cols-2 gap-12 items-center"
         >
           {/* Left side - Message + Social Links */}
           <div className="space-y-8">
             <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-6 rounded-2xl border border-primary/10 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Let&apos;s Connect</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                Let&apos;s Connect
+              </h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                I&apos;m currently open to new opportunities. Whether you have a project
-                in mind, a question, or just want to say hello — feel free to reach
-                out!
+                I&apos;m currently open to new opportunities. Whether you have a
+                project in mind, a question, or just want to say hello — feel
+                free to reach out!
               </p>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">Find me on</h3>
+              <h3 className="text-xl font-semibold text-foreground">
+                Find me on
+              </h3>
               <div className="flex gap-4 flex-wrap">
                 <a
                   href={twitter}
@@ -198,35 +205,42 @@ export default function ContactSection() {
           {/* Right side - Contact Actions */}
           <Card className="p-8 rounded-2xl shadow-lg border border-primary/10 space-y-6 backdrop-blur-sm bg-gray-100/70 dark:bg-neutral-900/50">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-2 text-foreground">Get in Touch</h3>
+              <h3 className="text-2xl font-bold mb-2 text-foreground">
+                Get in Touch
+              </h3>
               <p className="text-muted-foreground">
                 Prefer direct contact? Feel free to email or message me:
               </p>
             </div>
 
             <div className="flex flex-col gap-4">
-              <Button 
-                asChild 
-                variant="outline" 
+              <Button
+                asChild
+                variant="outline"
                 className="gap-2 p-6 rounded-xl border-primary/20 hover:border-primary/50 hover:bg-primary/5 hover-scale group"
               >
-                <a href={`mailto:${email}`} className="flex justify-between items-center w-full">
+                <a
+                  href={`mailto:${email}`}
+                  className="flex justify-between items-center w-full"
+                >
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-full bg-primary/10 text-primary">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div className="text-left">
                       <div className="font-medium">Email Me</div>
-                      <div className="text-sm text-muted-foreground">{email}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {email}
+                      </div>
                     </div>
                   </div>
                   <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </a>
               </Button>
 
-              <Button 
-                asChild 
-                variant="outline" 
+              <Button
+                asChild
+                variant="outline"
                 className="gap-2 p-6 rounded-xl border-primary/20 hover:border-primary/50 hover:bg-primary/5 hover-scale group"
               >
                 <a
@@ -241,7 +255,9 @@ export default function ContactSection() {
                     </div>
                     <div className="text-left">
                       <div className="font-medium">WhatsApp</div>
-                      <div className="text-sm text-muted-foreground">+{whatsApp}</div>
+                      <div className="text-sm text-muted-foreground">
+                        +{whatsApp}
+                      </div>
                     </div>
                   </div>
                   <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
