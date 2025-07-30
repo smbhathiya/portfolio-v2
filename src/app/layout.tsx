@@ -32,23 +32,57 @@ export const metadata: Metadata = {
     "Node.js",
     "Portfolio",
     "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer",
+    "JavaScript",
+    "TypeScript",
+    "C#",
+    "SQL",
+    "Web Development",
+    "Mobile App Development",
+    "UI/UX",
+    "REST API",
+    "Database Design",
+    "Cloud Computing",
+    "Software Architecture",
+    "Sri Lankan Developer"
   ],
-  authors: [{ name: "Bhathiya Lakshan" }],
+  authors: [{ name: "Bhathiya Lakshan", url: "https://bhathiya-.dev" }],
   creator: "Bhathiya Lakshan",
+  publisher: "Bhathiya Lakshan",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     title: "Bhathiya Lakshan | Web Application Developer | Portfolio",
     description:
       "Experienced in .NET Web API, Next.js, React, and Node.js. Check out my portfolio to see my work.",
-    url: "https://bhathiya-.dev/",
+    url: "https://bhathiya.dev/",
     siteName: "Bhathiya Lakshan Portfolio",
     locale: "en_US",
     type: "website",
   },
-  metadataBase: new URL("https://bhathiya-.dev"),
+  twitter: {
+    card: "summary_large_image",
+    title: "Bhathiya Lakshan | Web Application Developer",
+    description: "Full-stack web developer specializing in modern web technologies",
+    images: ["/og-image.png"],
+  },
+  metadataBase: new URL("https://bhathiya.dev"),
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  category: "technology",
   themeColor: [
     { media: "(prefers-color-scheme: dark)", color: "#0f172a" }
   ],
@@ -56,6 +90,9 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
     maximumScale: 5,
+  },
+  alternates: {
+    canonical: "https://bhathiya.dev",
   },
 };
 
