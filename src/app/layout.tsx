@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "Database Design",
     "Cloud Computing",
     "Software Architecture",
-    "Sri Lankan Developer"
+    "Sri Lankan Developer",
   ],
   authors: [{ name: "Bhathiya Lakshan", url: "https://bhathiya-.dev" }],
   creator: "Bhathiya Lakshan",
@@ -67,7 +67,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bhathiya Lakshan | Web Application Developer",
-    description: "Full-stack web developer specializing in modern web technologies",
+    description:
+      "Full-stack web developer specializing in modern web technologies",
     images: ["/og-image.png"],
   },
   metadataBase: new URL("https://bhathiya.dev"),
@@ -83,17 +84,18 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" }
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
+  // themeColor moved to top-level `export const viewport` per Next.js app router
+  // viewport moved to top-level `export const viewport` per Next.js app router
   alternates: {
     canonical: "https://bhathiya.dev",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#0f172a" }],
 };
 
 export default function RootLayout({

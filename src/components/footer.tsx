@@ -53,7 +53,7 @@ export default function FooterSection() {
   ];
 
   return (
-    <footer className="py-16 md:py-24 relative bg-gray-100/50 dark:bg-neutral-900/50">
+    <footer className="relative overflow-hidden bg-white/[0.03] py-16 md:py-24 backdrop-blur-xl">
       {/* Top wavy divider */}
       <div className="absolute top-0 left-0 w-full overflow-hidden">
         <svg
@@ -79,6 +79,11 @@ export default function FooterSection() {
         </svg>
       </div>
 
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-1/5 top-10 h-40 w-40 rounded-full bg-primary/15 blur-3xl" />
+        <div className="absolute right-1/4 bottom-6 h-48 w-48 rounded-full bg-accent/15 blur-[130px]" />
+      </div>
+
       <div className="container mx-auto max-w-5xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Logo and info */}
@@ -86,7 +91,7 @@ export default function FooterSection() {
             <Link href="/" className="inline-block">
               <h2 className="text-xl font-bold gradient-text">BL</h2>
             </Link>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               Building innovative web applications with modern technologies and
               a passion for clean code.
             </p>
@@ -100,10 +105,10 @@ export default function FooterSection() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center gap-1 hover:translate-x-1 transform duration-200"
+                    className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-all duration-200 hover:translate-x-1 hover:text-primary"
                   >
-                    <span className="w-1 h-1 rounded-full bg-primary inline-block"></span>
-                    <span>{link.title}</span>
+                    <span className="h-1 w-1 rounded-full bg-primary" />
+                    <span className="font-medium">{link.title}</span>
                   </Link>
                 </li>
               ))}
@@ -128,7 +133,7 @@ export default function FooterSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="p-2 rounded-full bg-secondary hover:bg-primary/20 text-foreground transition-all duration-300 hover-scale"
+                  className="rounded-full border border-white/15 bg-white/5 p-2.5 text-foreground transition-all duration-300 hover:border-primary/40 hover:bg-primary/10"
                 >
                   <svg
                     className="size-4"
@@ -171,7 +176,7 @@ export default function FooterSection() {
         </div>
 
         <div className="border-t border-border pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Bhathiya Lakshan. All rights reserved.
           </span>
 
