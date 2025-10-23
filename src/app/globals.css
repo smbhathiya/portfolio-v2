@@ -177,7 +177,8 @@
 }
 
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 5px 2px var(--primary);
     filter: brightness(1);
   }
@@ -188,7 +189,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -250,6 +252,48 @@
   transform: scale(1.05);
 }
 
+.soft-grid {
+  background-image: linear-gradient(
+      transparent 0,
+      transparent 96%,
+      rgba(255, 255, 255, 0.05) 96%,
+      rgba(255, 255, 255, 0.05) 100%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 96%,
+      rgba(255, 255, 255, 0.05) 96%,
+      rgba(255, 255, 255, 0.05) 100%
+    ),
+    linear-gradient(
+      transparent 0,
+      transparent 92%,
+      rgba(255, 255, 255, 0.02) 92%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 92%,
+      rgba(255, 255, 255, 0.02) 92%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+  background-size: 140px 140px, 140px 140px, 35px 35px, 35px 35px;
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.55),
+    transparent 75%
+  );
+  pointer-events: none;
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
 .section-divider {
   position: relative;
   height: 2px;
@@ -304,7 +348,8 @@ html {
 }
 
 /* Add to floating and glowing elements for better performance */
-.glow-effect, .float-animation {
+.glow-effect,
+.float-animation {
   will-change: transform, box-shadow;
 }
 
@@ -314,7 +359,9 @@ html {
 }
 
 /* Help prevent content layout shifts */
-img, video, svg {
+img,
+video,
+svg {
   max-width: 100%;
   height: auto;
   display: block;
@@ -322,8 +369,12 @@ img, video, svg {
 
 /* Preload animations to prevent flicker on page load */
 @keyframes preload {
-  from { opacity: 0; }
-  to { opacity: 0; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 body::before {
@@ -347,11 +398,13 @@ a:focus-visible {
 }
 
 /* Improved transitions for interactive elements */
-a, button {
+a,
+button {
   transition: all 0.2s ease-in-out;
 }
 
 /* Improved code styling */
-code, pre {
+code,
+pre {
   font-family: var(--font-mono);
 }
