@@ -18,12 +18,10 @@ interface Project {
   gitUrl: string;
   previewUrl: string;
 }
-
-const categories = ["All", "Web", "Desktop"];
+const INITIAL_COUNT = 3;
 
 export default function ProjectsFilteredBox() {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -31,19 +29,7 @@ export default function ProjectsFilteredBox() {
 
   const sortedProjects = [...projectsData].sort((a, b) => b.id - a.id);
 
-  const categoryCounts = categories.map((cat) => ({
-    type: cat,
-    count:
-      cat === "All"
-        ? sortedProjects.length
-        : sortedProjects.filter((p) => p.tag.includes(cat)).length,
-  }));
-
-  const handleCategoryClick = (cat: string) => {
-    setActiveCategory(cat);
-    setVisibleCount(4);
-    setIsExpanded(false);
-  };
+  // No category filtering: we always show the projects list (all projects)
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,12 +41,14 @@ export default function ProjectsFilteredBox() {
   }, []);
 
   const toggleShowMore = () => {
-    if (isMobile) {
-      setVisibleCount(isExpanded ? 3 : 6);
-    } else {
-      setVisibleCount(isExpanded ? 4 : filtered.length);
+    if (isExpanded) {
+      setVisibleCount(Math.min(filtered.length, INITIAL_COUNT));
+      setIsExpanded(false);
+      return;
     }
-    setIsExpanded((prev) => !prev);
+
+    setVisibleCount(filtered.length);
+    setIsExpanded(true);
   };
 
   const openDialog = (project: Project) => {
@@ -73,64 +61,22 @@ export default function ProjectsFilteredBox() {
     setIsDialogOpen(false);
   };
 
-  const filtered =
-    activeCategory === "All"
-      ? sortedProjects
-      : sortedProjects.filter((p) => p.tag.includes(activeCategory));
+  const filtered = sortedProjects;
+
+  useEffect(() => {
+    if (isExpanded) return;
+
+    const initialCount = Math.min(filtered.length, INITIAL_COUNT);
+    if (visibleCount !== initialCount) {
+      setVisibleCount(initialCount);
+    }
+  }, [filtered.length, isExpanded, visibleCount]);
 
   const visibleProjects = filtered.slice(0, visibleCount);
 
   return (
     <section className="space-y-10 rounded-[2.25rem] border border-white/10 bg-white/[0.03] p-10 shadow-xl shadow-primary/10 backdrop-blur-xl">
-      <AnimatedGroup
-        variants={{
-          container: {
-            visible: {
-              transition: {
-                staggerChildren: 0.08,
-              },
-            },
-          },
-          item: {
-            hidden: { opacity: 0, y: 16 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.4,
-              },
-            },
-          },
-        }}
-        className="flex flex-wrap justify-center gap-3"
-      >
-        {categoryCounts.map(({ type, count }) => {
-          const isActive = activeCategory === type;
-          return (
-            <button
-              key={type}
-              type="button"
-              onClick={() => handleCategoryClick(type)}
-              className={`group inline-flex items-center gap-3 rounded-full border px-5 py-2 text-sm transition ${
-                isActive
-                  ? "border-primary/60 bg-primary/15 text-foreground shadow-sm shadow-primary/20"
-                  : "border-white/15 bg-white/5 text-muted-foreground hover:border-primary/40 hover:text-foreground"
-              }`}
-            >
-              <span
-                className={`flex size-8 items-center justify-center rounded-full text-xs font-semibold ${
-                  isActive
-                    ? "bg-primary text-white"
-                    : "bg-white/10 text-foreground"
-                }`}
-              >
-                {count}
-              </span>
-              <span className="font-medium capitalize">{type}</span>
-            </button>
-          );
-        })}
-      </AnimatedGroup>
+      {/* Category tabs removed - showing default list of projects */}
 
       {/* Project cards */}
       <AnimatedGroup
@@ -248,18 +194,14 @@ export default function ProjectsFilteredBox() {
       </AnimatedGroup>
 
       {/* Show More / Less */}
-      {filtered.length > visibleCount && (
+      {filtered.length > INITIAL_COUNT && (
         <div className="flex justify-center pt-8">
           <Button
             variant="outline"
             onClick={toggleShowMore}
             className="rounded-full border-white/20 bg-white/5 px-6 backdrop-blur hover:border-primary/50"
           >
-            {isExpanded
-              ? "Show Less"
-              : isMobile
-              ? "Show More"
-              : "Show All Projects"}
+            {isExpanded ? "Show Less" : "Show All"}
           </Button>
         </div>
       )}

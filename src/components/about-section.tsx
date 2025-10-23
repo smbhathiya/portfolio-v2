@@ -47,7 +47,6 @@ const buildSteps = [
 ];
 
 const stats = [
-  { label: "Projects shipped", value: `${projectsData.length}+` },
   { label: "Primary stack", value: "Next.js • TypeScript • .NET" },
   { label: "Based in", value: "Kadawatha, Sri Lanka" },
 ];

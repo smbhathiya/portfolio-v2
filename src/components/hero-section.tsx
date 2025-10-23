@@ -27,11 +27,6 @@ const heroChips = ["TypeScript", "Next.js", ".NET", "Prisma", "Azure"];
 const totalProjects = projectsData.length;
 const heroStats = [
   {
-    label: "Projects shipped",
-    value: `${totalProjects}+`,
-    icon: Rocket,
-  },
-  {
     label: "Full-stack expertise",
     value: "TypeScript · .NET",
     icon: Layers,
@@ -78,7 +73,7 @@ export default function HeroSection() {
                   },
                 },
               }}
-              className="space-y-6 text-center lg:text-left"
+              className="relative z-20 space-y-6 text-center lg:text-left"
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-foreground/80 shadow-sm backdrop-blur-md dark:border-white/15">
                 <Sparkles className="size-4 text-primary" />
@@ -193,7 +188,7 @@ export default function HeroSection() {
               </div>
             </AnimatedGroup>
 
-            <div className="relative flex justify-center">
+            <div className="relative z-10 flex justify-center">
               <div className="group relative w-full max-w-sm">
                 <div className="absolute -inset-16 rounded-full bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl transition duration-700 group-hover:opacity-90" />
                 <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.03] shadow-2xl shadow-primary/10 backdrop-blur-xl">
@@ -204,7 +199,7 @@ export default function HeroSection() {
                         alt="Bhathiya Lakshan"
                         fill
                         sizes="(min-width: 1024px) 320px, 60vw"
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
                     </div>
